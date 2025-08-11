@@ -1,383 +1,461 @@
 import React, { useState } from 'react'
-import { Plus, Search, Edit, Trash2, Users, Target, Calendar } from 'lucide-react'
+import { Plus, Search, Edit, Trash2, Users, Target, Star } from 'lucide-react'
 
 interface Team {
   id: string
   name: string
-  department: string
+  description: string
   leader: string
   memberCount: number
+  department: string
   status: 'active' | 'inactive'
-  description: string
-  projects: string[]
   createdAt: string
+  projects: number
+  performance: 'excellent' | 'good' | 'average' | 'poor'
 }
 
-const mockTeams: Team[] = [
+const initialTeams: Team[] = [
   {
     id: '1',
     name: 'Frontend Development',
-    department: 'Information Technology',
-    leader: 'Michael Chen',
-    memberCount: 8,
-    status: 'active',
     description: 'Responsible for user interface development and user experience',
-    projects: ['Customer Portal', 'Mobile App', 'Admin Dashboard'],
-    createdAt: '2024-01-15'
+    leader: 'Alex Johnson',
+    memberCount: 8,
+    department: 'Information Technology',
+    status: 'active',
+    createdAt: '2024-01-15',
+    projects: 12,
+    performance: 'excellent'
   },
   {
     id: '2',
     name: 'Backend Development',
-    department: 'Information Technology',
-    leader: 'Sarah Johnson',
-    memberCount: 6,
-    status: 'active',
     description: 'Handles server-side logic and database management',
-    projects: ['API Development', 'Database Optimization', 'System Integration'],
-    createdAt: '2024-01-10'
+    leader: 'Sarah Chen',
+    memberCount: 6,
+    department: 'Information Technology',
+    status: 'active',
+    createdAt: '2024-01-10',
+    projects: 15,
+    performance: 'good'
   },
   {
     id: '3',
-    name: 'Digital Marketing',
-    department: 'Marketing',
-    leader: 'David Kim',
+    name: 'Quality Assurance',
+    description: 'Ensures software quality through testing and validation',
+    leader: 'Mike Rodriguez',
     memberCount: 5,
+    department: 'Information Technology',
     status: 'active',
-    description: 'Manages online marketing campaigns and social media presence',
-    projects: ['Social Media Campaign', 'SEO Optimization', 'Content Marketing'],
-    createdAt: '2024-01-20'
+    createdAt: '2024-01-20',
+    projects: 8,
+    performance: 'good'
   },
   {
     id: '4',
-    name: 'Financial Planning',
-    department: 'Finance',
-    leader: 'Emily Rodriguez',
-    memberCount: 4,
+    name: 'Marketing Campaigns',
+    description: 'Creates and executes marketing strategies and campaigns',
+    leader: 'Jennifer Smith',
+    memberCount: 7,
+    department: 'Marketing',
     status: 'active',
-    description: 'Handles budgeting, forecasting, and financial analysis',
-    projects: ['Annual Budget', 'Financial Reports', 'Cost Analysis'],
-    createdAt: '2024-02-01'
+    createdAt: '2024-01-12',
+    projects: 6,
+    performance: 'excellent'
   },
   {
     id: '5',
-    name: 'HR Operations',
-    department: 'Human Resources',
-    leader: 'Lisa Thompson',
-    memberCount: 7,
+    name: 'Sales Operations',
+    description: 'Manages sales processes and customer relationships',
+    leader: 'David Kim',
+    memberCount: 10,
+    department: 'Sales',
     status: 'active',
-    description: 'Manages day-to-day HR operations and employee relations',
-    projects: ['Employee Onboarding', 'Policy Updates', 'Training Programs'],
-    createdAt: '2024-01-25'
+    createdAt: '2024-01-08',
+    projects: 4,
+    performance: 'average'
   }
 ]
 
 const TeamsPage: React.FC = () => {
-  const [teams, setTeams] = useState<Team[]>(mockTeams)
-  const [searchTerm, setSearchTerm] = useState('')
-  const [showAddModal, setShowAddModal] = useState(false)
+  const [teams, setTeams] = useState<Team[]>(initialTeams)
+  const [searchTerm, setSearchTerm] = useState<string>('')
+  const [showAddModal, setShowAddModal] = useState<boolean>(false)
   const [editingTeam, setEditingTeam] = useState<Team | null>(null)
 
   const filteredTeams = teams.filter(team =>
     team.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    team.department.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    team.leader.toLowerCase().includes(searchTerm.toLowerCase())
+    team.leader.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    team.department.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
-  const handleDelete = (id: string) => {
-    setTeams(teams.filter(team => team.id !== id))
+  const handleAddTeam = (newTeam: Omit<Team, 'id' | 'createdAt'>) => {
+    const team: Team = {
+      ...newTeam,
+      id: Date.now().toString(),
+      createdAt: new Date().toISOString().split('T')[0]
+    }
+    setTeams([...teams, team])
+    setShowAddModal(false)
   }
 
-  const handleStatusToggle = (id: string) => {
-    setTeams(teams.map(team =>
-      team.id === id
-        ? { ...team, status: team.status === 'active' ? 'inactive' : 'active' }
-        : team
+  const handleEditTeam = (team: Team) => {
+    setEditingTeam(team)
+    setShowAddModal(true)
+  }
+
+  const handleUpdateTeam = (updatedTeam: Team) => {
+    setTeams(teams.map(team => 
+      team.id === updatedTeam.id ? updatedTeam : team
     ))
+    setEditingTeam(null)
+    setShowAddModal(false)
+  }
+
+  const handleDeleteTeam = (id: string) => {
+    if (window.confirm('Are you sure you want to delete this team?')) {
+      setTeams(teams.filter(team => team.id !== id))
+    }
+  }
+
+  const getPerformanceColor = (performance: string) => {
+    switch (performance) {
+      case 'excellent': return 'bg-green-100 text-green-800'
+      case 'good': return 'bg-blue-100 text-blue-800'
+      case 'average': return 'bg-yellow-100 text-yellow-800'
+      case 'poor': return 'bg-red-100 text-red-800'
+      default: return 'bg-gray-100 text-gray-800'
+    }
   }
 
   return (
-    <div className="p-6 bg-gray-50 min-h-screen">
-      <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="mb-8">
-          <div className="flex items-center justify-between">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Teams</h1>
-              <p className="text-gray-600 mt-2">Manage team structures and project assignments</p>
+    <div className="p-6">
+      <div className="mb-6">
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">Teams</h1>
+        <p className="text-gray-600">Manage organizational teams and their performance</p>
+      </div>
+
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex items-center">
+            <div className="p-2 bg-blue-100 rounded-lg">
+              <Users className="h-6 w-6 text-blue-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Total Teams</p>
+              <p className="text-2xl font-bold text-gray-900">{teams.length}</p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex items-center">
+            <div className="p-2 bg-green-100 rounded-lg">
+              <Users className="h-6 w-6 text-green-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Total Members</p>
+              <p className="text-2xl font-bold text-gray-900">
+                {teams.reduce((sum, team) => sum + team.memberCount, 0)}
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex items-center">
+            <div className="p-2 bg-purple-100 rounded-lg">
+              <Target className="h-6 w-6 text-purple-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Active Projects</p>
+              <p className="text-2xl font-bold text-gray-900">
+                {teams.reduce((sum, team) => sum + team.projects, 0)}
+              </p>
+            </div>
+          </div>
+        </div>
+        
+        <div className="bg-white rounded-lg shadow p-6">
+          <div className="flex items-center">
+            <div className="p-2 bg-orange-100 rounded-lg">
+              <Star className="h-6 w-6 text-orange-600" />
+            </div>
+            <div className="ml-4">
+              <p className="text-sm font-medium text-gray-600">Avg Performance</p>
+              <p className="text-2xl font-bold text-gray-900">
+                {teams.filter(team => team.performance === 'excellent' || team.performance === 'good').length}/{teams.length}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Actions Bar */}
+      <div className="bg-white rounded-lg shadow mb-6">
+        <div className="p-6 border-b border-gray-200">
+          <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <input
+                type="text"
+                placeholder="Search teams..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
             </div>
             <button
               onClick={() => setShowAddModal(true)}
-              className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 flex items-center gap-2"
+              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2"
             >
-              <Plus className="w-5 h-5" />
+              <Plus className="h-4 w-4 mr-2" />
               Add Team
             </button>
           </div>
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <div className="flex items-center">
-              <div className="p-2 bg-blue-100 rounded-lg">
-                <Users className="w-6 h-6 text-blue-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total Teams</p>
-                <p className="text-2xl font-bold text-gray-900">{teams.length}</p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <div className="flex items-center">
-              <div className="p-2 bg-green-100 rounded-lg">
-                <Users className="w-6 h-6 text-green-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total Members</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {teams.reduce((sum, team) => sum + team.memberCount, 0)}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <div className="flex items-center">
-              <div className="p-2 bg-purple-100 rounded-lg">
-                <Target className="w-6 h-6 text-purple-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Active Teams</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {teams.filter(team => team.status === 'active').length}
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200">
-            <div className="flex items-center">
-              <div className="p-2 bg-orange-100 rounded-lg">
-                <Calendar className="w-6 h-6 text-orange-600" />
-              </div>
-              <div className="ml-4">
-                <p className="text-sm font-medium text-gray-600">Total Projects</p>
-                <p className="text-2xl font-bold text-gray-900">
-                  {teams.reduce((sum, team) => sum + team.projects.length, 0)}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Search and Filters */}
-        <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-6">
-          <div className="flex flex-col sm:flex-row gap-4">
-            <div className="flex-1">
-              <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
-                <input
-                  type="text"
-                  placeholder="Search teams, departments, or leaders..."
-                  value={searchTerm}
-                  onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
-                />
-              </div>
-            </div>
-            <div className="flex gap-2">
-              <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-                <option value="">All Status</option>
-                <option value="active">Active</option>
-                <option value="inactive">Inactive</option>
-              </select>
-              <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-                <option value="">All Departments</option>
-                {Array.from(new Set(teams.map(team => team.department))).map(dept => (
-                  <option key={dept} value={dept}>{dept}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-        </div>
-
-        {/* Teams Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTeams.map((team) => (
-            <div key={team.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition-shadow">
-              <div className="flex items-start justify-between mb-4">
-                <div>
-                  <h3 className="text-lg font-semibold text-gray-900">{team.name}</h3>
-                  <p className="text-sm text-gray-500">{team.department}</p>
-                </div>
-                <span
-                  className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
-                    team.status === 'active'
-                      ? 'bg-green-100 text-green-800'
-                      : 'bg-red-100 text-red-800'
-                  }`}
-                >
-                  {team.status}
-                </span>
-              </div>
-              
-              <div className="space-y-3 mb-4">
-                <div className="flex items-center text-sm text-gray-600">
-                  <Users className="w-4 h-4 mr-2" />
-                  <span>Leader: {team.leader}</span>
-                </div>
-                <div className="flex items-center text-sm text-gray-600">
-                  <Users className="w-4 h-4 mr-2" />
-                  <span>Members: {team.memberCount}</span>
-                </div>
-                <div className="text-sm text-gray-600">
-                  <p className="mb-2">{team.description}</p>
-                </div>
-              </div>
-
-              <div className="mb-4">
-                <h4 className="text-sm font-medium text-gray-700 mb-2">Active Projects:</h4>
-                <div className="flex flex-wrap gap-1">
-                  {team.projects.map((project, index) => (
-                    <span
-                      key={index}
-                      className="inline-flex px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full"
-                    >
-                      {project}
+        {/* Teams Table */}
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50">
+              <tr>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Team
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Leader
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Members
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Department
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Projects
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Performance
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Status
+                </th>
+                <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {filteredTeams.map((team) => (
+                <tr key={team.id} className="hover:bg-gray-50">
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div>
+                      <div className="text-sm font-medium text-gray-900">{team.name}</div>
+                      <div className="text-sm text-gray-500">{team.description}</div>
+                    </div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{team.leader}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{team.memberCount}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{team.department}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <div className="text-sm text-gray-900">{team.projects}</div>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${getPerformanceColor(team.performance)}`}>
+                      {team.performance}
                     </span>
-                  ))}
-                </div>
-              </div>
-
-              <div className="flex items-center justify-between pt-4 border-t border-gray-200">
-                <span className="text-xs text-gray-500">
-                  Created: {new Date(team.createdAt).toLocaleDateString()}
-                </span>
-                <div className="flex gap-2">
-                  <button
-                    onClick={() => setEditingTeam(team)}
-                    className="text-primary-600 hover:text-primary-900 p-1"
-                  >
-                    <Edit className="w-4 h-4" />
-                  </button>
-                  <button
-                    onClick={() => handleStatusToggle(team.id)}
-                    className={`p-1 rounded ${
-                      team.status === 'active'
-                        ? 'text-orange-600 hover:text-orange-900'
-                        : 'text-green-600 hover:text-green-900'
-                    }`}
-                  >
-                    {team.status === 'active' ? 'Deactivate' : 'Activate'}
-                  </button>
-                  <button
-                    onClick={() => handleDelete(team.id)}
-                    className="text-red-600 hover:text-red-900 p-1"
-                  >
-                    <Trash2 className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                      team.status === 'active' 
+                        ? 'bg-green-100 text-green-800' 
+                        : 'bg-red-100 text-red-800'
+                    }`}>
+                      {team.status}
+                    </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                    <button
+                      onClick={() => handleEditTeam(team)}
+                      className="text-blue-600 hover:text-blue-900 mr-4"
+                    >
+                      <Edit className="h-4 w-4" />
+                    </button>
+                    <button
+                      onClick={() => handleDeleteTeam(team.id)}
+                      className="text-red-600 hover:text-red-900"
+                    >
+                      <Trash2 className="h-4 w-4" />
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-
-        {/* Empty State */}
-        {filteredTeams.length === 0 && (
-          <div className="text-center py-12">
-            <Users className="mx-auto h-12 w-12 text-gray-400" />
-            <h3 className="mt-2 text-sm font-medium text-gray-900">No teams found</h3>
-            <p className="mt-1 text-sm text-gray-500">
-              {searchTerm ? 'Try adjusting your search terms.' : 'Get started by creating a new team.'}
-            </p>
-            {!searchTerm && (
-              <div className="mt-6">
-                <button
-                  onClick={() => setShowAddModal(true)}
-                  className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700"
-                >
-                  Add Team
-                </button>
-              </div>
-            )}
-          </div>
-        )}
       </div>
 
       {/* Add/Edit Team Modal */}
-      {(showAddModal || editingTeam) && (
+      {showAddModal && (
         <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full z-50">
           <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-            <div className="mt-3">
-              <h3 className="text-lg font-medium text-gray-900 mb-4">
+            <div className="flex justify-between items-center pb-3">
+              <h3 className="text-lg font-semibold text-gray-900">
                 {editingTeam ? 'Edit Team' : 'Add New Team'}
               </h3>
-              <form className="space-y-4">
+              <button
+                onClick={() => {
+                  setShowAddModal(false)
+                  setEditingTeam(null)
+                }}
+                className="text-gray-400 hover:text-gray-600"
+              >
+                &times;
+              </button>
+            </div>
+            
+            <form onSubmit={(e) => {
+              e.preventDefault()
+              const formData = new FormData(e.currentTarget)
+              const newTeam = {
+                name: formData.get('name') as string,
+                description: formData.get('description') as string,
+                leader: formData.get('leader') as string,
+                memberCount: parseInt(formData.get('memberCount') as string),
+                department: formData.get('department') as string,
+                status: formData.get('status') as 'active' | 'inactive',
+                projects: parseInt(formData.get('projects') as string),
+                performance: formData.get('performance') as 'excellent' | 'good' | 'average' | 'poor'
+              }
+              
+              if (editingTeam) {
+                handleUpdateTeam({ ...editingTeam, ...newTeam })
+              } else {
+                handleAddTeam(newTeam)
+              }
+            }}>
+              <div className="space-y-4">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Team Name</label>
+                  <label className="block text-sm font-medium text-gray-700">Name</label>
                   <input
                     type="text"
-                    defaultValue={editingTeam?.name || ''}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    name="name"
+                    defaultValue={editingTeam?.name}
+                    required
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
+                
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Department</label>
-                  <select
-                    defaultValue={editingTeam?.department || ''}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
-                  >
-                    <option value="">Select Department</option>
-                    <option value="Human Resources">Human Resources</option>
-                    <option value="Information Technology">Information Technology</option>
-                    <option value="Finance">Finance</option>
-                    <option value="Marketing">Marketing</option>
-                    <option value="Operations">Operations</option>
-                  </select>
+                  <label className="block text-sm font-medium text-gray-700">Description</label>
+                  <textarea
+                    name="description"
+                    defaultValue={editingTeam?.description}
+                    rows={3}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  />
                 </div>
+                
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Team Leader</label>
+                  <label className="block text-sm font-medium text-gray-700">Leader</label>
                   <input
                     type="text"
-                    defaultValue={editingTeam?.leader || ''}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    name="leader"
+                    defaultValue={editingTeam?.leader}
+                    required
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
+                
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Member Count</label>
                   <input
                     type="number"
-                    defaultValue={editingTeam?.memberCount || ''}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                    name="memberCount"
+                    defaultValue={editingTeam?.memberCount}
+                    required
+                    min="1"
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
+                
                 <div>
-                  <label className="block text-sm font-medium text-gray-700">Description</label>
-                  <textarea
-                    defaultValue={editingTeam?.description || ''}
-                    rows={3}
-                    className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary-500 focus:border-primary-500"
+                  <label className="block text-sm font-medium text-gray-700">Department</label>
+                  <input
+                    type="text"
+                    name="department"
+                    defaultValue={editingTeam?.department}
+                    required
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
                   />
                 </div>
-                <div className="flex justify-end gap-3 pt-4">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setShowAddModal(false)
-                      setEditingTeam(null)
-                    }}
-                    className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200"
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    type="submit"
-                    className="px-4 py-2 text-sm font-medium text-white bg-primary-600 rounded-md hover:bg-primary-700"
-                  >
-                    {editingTeam ? 'Update' : 'Create'}
-                  </button>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Projects</label>
+                  <input
+                    type="number"
+                    name="projects"
+                    defaultValue={editingTeam?.projects}
+                    required
+                    min="0"
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  />
                 </div>
-              </form>
-            </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Performance</label>
+                  <select
+                    name="performance"
+                    defaultValue={editingTeam?.performance || 'good'}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  >
+                    <option value="excellent">Excellent</option>
+                    <option value="good">Good</option>
+                    <option value="average">Average</option>
+                    <option value="poor">Poor</option>
+                  </select>
+                </div>
+                
+                <div>
+                  <label className="block text-sm font-medium text-gray-700">Status</label>
+                  <select
+                    name="status"
+                    defaultValue={editingTeam?.status || 'active'}
+                    className="mt-1 block w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                  >
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                  </select>
+                </div>
+              </div>
+              
+              <div className="flex justify-end space-x-3 mt-6">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setShowAddModal(false)
+                    setEditingTeam(null)
+                  }}
+                  className="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 border border-gray-300 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                >
+                  {editingTeam ? 'Update' : 'Create'}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

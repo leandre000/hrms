@@ -142,6 +142,48 @@ import HRLeavePage from '@/pages/hr/LeavePage'
 import HROvertimePage from '@/pages/hr/OvertimePage'
 import SchedulesPage from '@/pages/hr/SchedulesPage'
 import HRPerformancePage from '@/pages/hr/PerformancePage'
+import HRDepartmentsPage from '@/pages/hr/DepartmentsPage'
+import HRPoliciesPage from '@/pages/hr/PoliciesPage'
+import HRTeamsPage from '@/pages/hr/TeamsPage'
+import HRLocationsPage from '@/pages/hr/LocationsPage'
+import HRHierarchyPage from '@/pages/hr/HierarchyPage'
+import HRCalendarPage from '@/pages/hr/CalendarPage'
+import HRCareerDevelopmentPage from '@/pages/hr/CareerDevelopmentPage'
+import HRIntegrationsPage from '@/pages/hr/IntegrationsPage'
+import HRCertificationsPage from '@/pages/hr/CertificationsPage'
+import HRPredictivePage from '@/pages/hr/PredictivePage'
+import HRSystemSettingsPage from '@/pages/hr/SystemSettingsPage'
+import HRMessagesPage from '@/pages/hr/MessagesPage'
+import HRProfilePage from '@/pages/hr/ProfilePage'
+import HRMentorshipPage from '@/pages/hr/MentorshipPage'
+import HRSettingsPage from '@/pages/hr/SettingsPage'
+import HRLearningAnalyticsPage from '@/pages/hr/LearningAnalyticsPage'
+import HRSkillsPage from '@/pages/hr/SkillsPage'
+import HRUserManagementPage from '@/pages/hr/UserManagementPage'
+import HRExecutiveReportsPage from '@/pages/hr/ExecutiveReportsPage'
+import HRWorkforceAnalyticsPage from '@/pages/hr/WorkforceAnalyticsPage'
+import HRReportsPage from '@/pages/hr/ReportsPage'
+import HRPrivacyPage from '@/pages/hr/PrivacyPage'
+import HRRiskPage from '@/pages/hr/RiskPage'
+import HRLegalPage from '@/pages/hr/LegalPage'
+import HRAuditPage from '@/pages/hr/AuditPage'
+import HRTemplatesPage from '@/pages/hr/TemplatesPage'
+import HRReportingPage from '@/pages/hr/ReportingPage'
+import HRFeedbackPage from '@/pages/hr/FeedbackPage'
+import HRPerformanceAnalyticsPage from '@/pages/hr/PerformanceAnalyticsPage'
+import HRCompensationAnalyticsPage from '@/pages/hr/CompensationAnalyticsPage'
+import HRTaxManagementPage from '@/pages/hr/TaxManagementPage'
+import HRPositionsPage from '@/pages/hr/PositionsPage'
+import HRContractsPage from '@/pages/hr/ContractsPage'
+import HRHandbookPage from '@/pages/hr/HandbookPage'
+import HRDocumentsPage from '@/pages/hr/DocumentsPage'
+import HRGoalsPage from '@/pages/hr/GoalsPage'
+import HRAnalyticsPage from '@/pages/hr/HRAnalyticsPage'
+import HRTrainingPage from '@/pages/hr/TrainingPage'
+import HRCostCentersPage from '@/pages/hr/CostCentersPage'
+import HRCompliancePage from '@/pages/hr/CompliancePage'
+import HRDataManagementPage from '@/pages/hr/DataManagementPage'
+import HRRolesPage from '@/pages/hr/RolesPage'
 
 function App() {
   return (
@@ -248,7 +290,48 @@ function App() {
             <Route path="overtime" element={<HROvertimePage />} />
             <Route path="schedules" element={<SchedulesPage />} />
             <Route path="performance" element={<HRPerformancePage />} />
-            {/* Additional HR routes will be added as pages are created */}
+            <Route path="departments" element={<HRDepartmentsPage />} />
+            <Route path="policies" element={<HRPoliciesPage />} />
+            <Route path="teams" element={<HRTeamsPage />} />
+            <Route path="locations" element={<HRLocationsPage />} />
+            <Route path="hierarchy" element={<HRHierarchyPage />} />
+            <Route path="calendar" element={<HRCalendarPage />} />
+            <Route path="career-development" element={<HRCareerDevelopmentPage />} />
+            <Route path="integrations" element={<HRIntegrationsPage />} />
+            <Route path="certifications" element={<HRCertificationsPage />} />
+            <Route path="predictive" element={<HRPredictivePage />} />
+            <Route path="system-settings" element={<HRSystemSettingsPage />} />
+            <Route path="messages" element={<HRMessagesPage />} />
+            <Route path="profile" element={<HRProfilePage />} />
+            <Route path="mentorship" element={<HRMentorshipPage />} />
+            <Route path="settings" element={<HRSettingsPage />} />
+            <Route path="learning-analytics" element={<HRLearningAnalyticsPage />} />
+            <Route path="skills" element={<HRSkillsPage />} />
+            <Route path="user-management" element={<HRUserManagementPage />} />
+            <Route path="executive-reports" element={<HRExecutiveReportsPage />} />
+            <Route path="workforce-analytics" element={<HRWorkforceAnalyticsPage />} />
+            <Route path="reports" element={<HRReportsPage />} />
+            <Route path="privacy" element={<HRPrivacyPage />} />
+            <Route path="risk" element={<HRRiskPage />} />
+            <Route path="legal" element={<HRLegalPage />} />
+            <Route path="audit" element={<HRAuditPage />} />
+            <Route path="templates" element={<HRTemplatesPage />} />
+            <Route path="reporting" element={<HRReportingPage />} />
+            <Route path="feedback" element={<HRFeedbackPage />} />
+            <Route path="performance-analytics" element={<HRPerformanceAnalyticsPage />} />
+            <Route path="compensation-analytics" element={<HRCompensationAnalyticsPage />} />
+            <Route path="tax-management" element={<HRTaxManagementPage />} />
+            <Route path="positions" element={<HRPositionsPage />} />
+            <Route path="contracts" element={<HRContractsPage />} />
+            <Route path="handbook" element={<HRHandbookPage />} />
+            <Route path="documents" element={<HRDocumentsPage />} />
+            <Route path="goals" element={<HRGoalsPage />} />
+            <Route path="analytics" element={<HRAnalyticsPage />} />
+            <Route path="training" element={<HRTrainingPage />} />
+            <Route path="cost-centers" element={<HRCostCentersPage />} />
+            <Route path="compliance" element={<HRCompliancePage />} />
+            <Route path="data-management" element={<HRDataManagementPage />} />
+            <Route path="roles" element={<HRRolesPage />} />
           </Route>
 
           {/* Auditor Routes */}
