@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Plus, Search, Edit, Trash2, FileText, Download, Eye, Calendar } from 'lucide-react'
+import { Plus, Search, Edit, Trash2, FileText, Download, Eye, Shield } from 'lucide-react'
 
 interface Document {
   id: string
@@ -13,6 +13,10 @@ interface Document {
   fileSize: string
   downloads: number
   description: string
+  isCompliance: boolean
+  complianceType?: 'regulatory' | 'internal' | 'industry' | 'legal'
+  lastAudit?: string
+  auditStatus?: 'compliant' | 'non-compliant' | 'pending' | 'under-review'
 }
 
 const mockDocuments: Document[] = [
@@ -27,7 +31,11 @@ const mockDocuments: Document[] = [
     lastModified: '2024-01-15',
     fileSize: '2.5 MB',
     downloads: 45,
-    description: 'Comprehensive employee handbook covering all company policies and procedures'
+    description: 'Comprehensive employee handbook covering all company policies and procedures',
+    isCompliance: true,
+    complianceType: 'internal',
+    lastAudit: '2024-01-10',
+    auditStatus: 'compliant'
   },
   {
     id: '2',
@@ -40,7 +48,11 @@ const mockDocuments: Document[] = [
     lastModified: '2024-01-20',
     fileSize: '1.2 MB',
     downloads: 32,
-    description: 'Updated leave policy including vacation, sick leave, and personal time'
+    description: 'Updated leave policy including vacation, sick leave, and personal time',
+    isCompliance: true,
+    complianceType: 'regulatory',
+    lastAudit: '2024-01-15',
+    auditStatus: 'compliant'
   },
   {
     id: '3',
@@ -53,7 +65,8 @@ const mockDocuments: Document[] = [
     lastModified: '2024-01-10',
     fileSize: '0.8 MB',
     downloads: 67,
-    description: 'Standard performance review form for annual evaluations'
+    description: 'Standard performance review form for annual evaluations',
+    isCompliance: false
   },
   {
     id: '4',
@@ -66,7 +79,8 @@ const mockDocuments: Document[] = [
     lastModified: '2024-01-25',
     fileSize: '1.5 MB',
     downloads: 28,
-    description: 'Comprehensive onboarding checklist for new employees'
+    description: 'Comprehensive onboarding checklist for new employees',
+    isCompliance: false
   },
   {
     id: '5',
@@ -79,7 +93,62 @@ const mockDocuments: Document[] = [
     lastModified: '2024-01-18',
     fileSize: '1.8 MB',
     downloads: 23,
-    description: 'Policy for employee expense reimbursement and approval process'
+    description: 'Policy for employee expense reimbursement and approval process',
+    isCompliance: true,
+    complianceType: 'internal',
+    lastAudit: '2024-01-12',
+    auditStatus: 'compliant'
+  },
+  {
+    id: '6',
+    title: 'Data Protection Policy',
+    type: 'policy',
+    category: 'IT & Security',
+    version: '2.0',
+    status: 'active',
+    author: 'Legal Team',
+    lastModified: '2024-01-22',
+    fileSize: '1.6 MB',
+    downloads: 89,
+    description: 'GDPR and data protection compliance policy for employee data handling',
+    isCompliance: true,
+    complianceType: 'regulatory',
+    lastAudit: '2024-01-20',
+    auditStatus: 'compliant'
+  },
+  {
+    id: '7',
+    title: 'Workplace Safety Procedures',
+    type: 'procedure',
+    category: 'Health & Safety',
+    version: '3.1',
+    status: 'active',
+    author: 'Safety Officer',
+    lastModified: '2024-01-19',
+    fileSize: '2.1 MB',
+    downloads: 156,
+    description: 'OSHA compliant workplace safety procedures and emergency protocols',
+    isCompliance: true,
+    complianceType: 'regulatory',
+    lastAudit: '2024-01-18',
+    auditStatus: 'compliant'
+  },
+  {
+    id: '8',
+    title: 'Anti-Discrimination Policy',
+    type: 'policy',
+    category: 'Legal & Compliance',
+    version: '1.8',
+    status: 'active',
+    author: 'Legal Team',
+    lastModified: '2024-01-16',
+    fileSize: '1.4 MB',
+    downloads: 134,
+    description: 'EEOC compliant anti-discrimination and harassment prevention policy',
+    isCompliance: true,
+    complianceType: 'regulatory',
+    lastAudit: '2024-01-14',
+    auditStatus: 'compliant'
   }
 ]
 
@@ -199,19 +268,75 @@ const DocumentsPage: React.FC = () => {
         </div>
       </div>
 
+      {/* Compliance Overview */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-6 border border-blue-200">
+        <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center">
+          <Shield className="w-5 h-5 mr-2" />
+          Compliance Documents Overview
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-white rounded-lg p-4 border border-blue-200">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-blue-600">
+                {documents.filter(doc => doc.isCompliance).length}
+              </p>
+              <p className="text-sm text-blue-800">Compliance Docs</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-green-200">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-green-600">
+                {documents.filter(doc => doc.isCompliance && doc.auditStatus === 'compliant').length}
+              </p>
+              <p className="text-sm text-green-800">Compliant</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-yellow-200">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-yellow-600">
+                {documents.filter(doc => doc.isCompliance && doc.auditStatus === 'pending').length}
+              </p>
+              <p className="text-sm text-yellow-800">Pending Review</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-red-200">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-red-600">
+                {documents.filter(doc => doc.isCompliance && doc.auditStatus === 'non-compliant').length}
+              </p>
+              <p className="text-sm text-red-800">Non-Compliant</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* Actions Bar */}
       <div className="bg-white rounded-lg shadow mb-6">
         <div className="p-6 border-b border-gray-200">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
-              <input
-                type="text"
-                placeholder="Search documents..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
+            <div className="flex flex-col sm:flex-row gap-4 flex-1">
+              <div className="relative max-w-md">
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Search documents..."
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                />
+              </div>
+              <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <option value="">All Types</option>
+                <option value="compliance">Compliance Only</option>
+                <option value="non-compliance">Non-Compliance</option>
+              </select>
+              <select className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                <option value="">All Categories</option>
+                <option value="regulatory">Regulatory</option>
+                <option value="internal">Internal</option>
+                <option value="industry">Industry</option>
+                <option value="legal">Legal</option>
+              </select>
             </div>
             <button
               onClick={() => setShowAddModal(true)}
@@ -248,6 +373,9 @@ const DocumentsPage: React.FC = () => {
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Status
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                  Compliance
                 </th>
                 <th className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
                   Actions
@@ -291,6 +419,30 @@ const DocumentsPage: React.FC = () => {
                     }`}>
                       {doc.status}
                     </span>
+                  </td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {doc.isCompliance ? (
+                      <div className="space-y-1">
+                        <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${
+                          doc.auditStatus === 'compliant' ? 'bg-green-100 text-green-800' :
+                          doc.auditStatus === 'pending' ? 'bg-yellow-100 text-yellow-800' :
+                          doc.auditStatus === 'non-compliant' ? 'bg-red-100 text-red-800' :
+                          'bg-blue-100 text-blue-800'
+                        }`}>
+                          {doc.auditStatus || 'Under Review'}
+                        </span>
+                        <div className="text-xs text-gray-500">
+                          {doc.complianceType && doc.complianceType.charAt(0).toUpperCase() + doc.complianceType.slice(1)}
+                        </div>
+                        {doc.lastAudit && (
+                          <div className="text-xs text-gray-400">
+                            Last: {new Date(doc.lastAudit).toLocaleDateString()}
+                          </div>
+                        )}
+                      </div>
+                    ) : (
+                      <span className="text-xs text-gray-400">N/A</span>
+                    )}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                     <div className="flex items-center justify-end space-x-2">
@@ -343,7 +495,8 @@ const DocumentsPage: React.FC = () => {
                   lastModified: formData.get('lastModified') as string,
                   fileSize: formData.get('fileSize') as string,
                   downloads: parseInt(formData.get('downloads') as string),
-                  description: formData.get('description') as string
+                  description: formData.get('description') as string,
+                  isCompliance: false
                 }
                 
                 if (editingDocument) {

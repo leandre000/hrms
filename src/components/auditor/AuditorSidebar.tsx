@@ -30,7 +30,15 @@ const AuditorSidebar = ({ isOpen, onClose }: AuditorSidebarProps) => {
   const location = useLocation()
   const [expandedMenus, setExpandedMenus] = useState<string[]>([])
 
-  const navigation = [
+  type NavigationItem = {
+    name: string
+    href?: string
+    icon: any
+    badge?: string | null
+    children?: { name: string; href: string }[]
+  }
+
+  const navigation: NavigationItem[] = [
     {
       name: 'Dashboard',
       href: '/auditor',
@@ -166,11 +174,11 @@ const AuditorSidebar = ({ isOpen, onClose }: AuditorSidebarProps) => {
 
       {/* Sidebar */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out flex flex-col
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex-shrink-0 flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center">
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center mr-3">
               <div className="w-4 h-4 bg-white rounded-sm"></div>
@@ -198,7 +206,7 @@ const AuditorSidebar = ({ isOpen, onClose }: AuditorSidebarProps) => {
         </div>
 
         {/* Navigation */}
-        <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+        <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
           {navigation.map((item) => {
             if (item.href) {
               // Single menu item
@@ -276,7 +284,7 @@ const AuditorSidebar = ({ isOpen, onClose }: AuditorSidebarProps) => {
         </nav>
 
         {/* Footer */}
-        <div className="p-4 border-t border-gray-200">
+        <div className="flex-shrink-0 p-4 border-t border-gray-200 bg-white">
           <div className="flex items-center px-3 py-2 text-sm text-gray-700">
             <div className="w-8 h-8 bg-gray-200 rounded-full mr-3 flex items-center justify-center">
               <span className="text-xs font-medium">AU</span>

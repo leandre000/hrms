@@ -13,7 +13,8 @@ import {
   Shield,
   BarChart3,
   FileText,
-  Building
+  Building,
+  Plus
 } from 'lucide-react'
 
 const HRDashboard = () => {
@@ -415,6 +416,162 @@ const HRDashboard = () => {
             <Shield className="w-6 h-6 text-primary-600 mx-auto mb-2" />
             <p className="text-sm font-medium text-gray-900">Compliance</p>
           </button>
+        </div>
+      </div>
+
+      {/* Analytics & Reports Section */}
+      <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <h3 className="text-lg font-semibold text-gray-900 mb-4 flex items-center">
+          <BarChart3 className="w-5 h-5 text-primary-600 mr-2" />
+          Analytics & Reports
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {/* Compliance Overview */}
+          <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-medium text-gray-900">Compliance Status</h4>
+              <Shield className="w-5 h-5 text-green-600" />
+            </div>
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Policies Active:</span>
+                <span className="font-medium text-gray-900">24/24</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Training Complete:</span>
+                <span className="font-medium text-gray-900">87%</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Audit Status:</span>
+                <span className="font-medium text-green-600">Compliant</span>
+              </div>
+            </div>
+            <button className="w-full mt-3 text-primary-600 hover:text-primary-700 text-sm font-medium">
+              View Details →
+            </button>
+          </div>
+
+          {/* Workforce Analytics */}
+          <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-medium text-gray-900">Workforce Insights</h4>
+              <Users className="w-5 h-5 text-blue-600" />
+            </div>
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Turnover Rate:</span>
+                <span className="font-medium text-gray-900">12.5%</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Satisfaction:</span>
+                <span className="font-medium text-gray-900">4.2/5</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Productivity:</span>
+                <span className="font-medium text-gray-900">87%</span>
+              </div>
+            </div>
+            <button className="w-full mt-3 text-primary-600 hover:text-primary-700 text-sm font-medium">
+              View Analytics →
+            </button>
+          </div>
+
+          {/* Performance Metrics */}
+          <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-medium text-gray-900">Performance</h4>
+              <Target className="w-5 h-5 text-purple-600" />
+            </div>
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Reviews Complete:</span>
+                <span className="font-medium text-gray-900">78%</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Goals Met:</span>
+                <span className="font-medium text-gray-900">82%</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Training Hours:</span>
+                <span className="font-medium text-gray-900">24.5</span>
+              </div>
+            </div>
+            <button className="w-full mt-3 text-primary-600 hover:text-primary-700 text-sm font-medium">
+              View Performance →
+            </button>
+          </div>
+
+          {/* Recent Reports */}
+          <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-medium text-gray-900">Recent Reports</h4>
+              <FileText className="w-5 h-5 text-orange-600" />
+            </div>
+            <div className="space-y-2">
+              <div className="text-sm text-gray-600">
+                <div className="font-medium text-gray-900">Turnover Analysis</div>
+                <div className="text-xs text-gray-500">Generated 2 days ago</div>
+              </div>
+              <div className="text-sm text-gray-600">
+                <div className="font-medium text-gray-900">Compliance Audit</div>
+                <div className="text-xs text-gray-500">Generated 5 days ago</div>
+              </div>
+              <div className="text-sm text-gray-600">
+                <div className="font-medium text-gray-900">Performance Review</div>
+                <div className="text-xs text-gray-500">Generated 1 week ago</div>
+              </div>
+            </div>
+            <button className="w-full mt-3 text-primary-600 hover:text-primary-700 text-sm font-medium">
+              View All Reports →
+            </button>
+          </div>
+
+          {/* Compliance Documents */}
+          <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-medium text-gray-900">Compliance Docs</h4>
+              <Shield className="w-5 h-5 text-red-600" />
+            </div>
+            <div className="space-y-2">
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Policies:</span>
+                <span className="font-medium text-gray-900">24</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Procedures:</span>
+                <span className="font-medium text-gray-900">18</span>
+              </div>
+              <div className="flex justify-between text-sm">
+                <span className="text-gray-600">Forms:</span>
+                <span className="font-medium text-gray-900">32</span>
+              </div>
+            </div>
+            <button className="w-full mt-3 text-primary-600 hover:text-primary-700 text-sm font-medium">
+              View Documents →
+            </button>
+          </div>
+
+          {/* Quick Actions */}
+          <div className="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
+            <div className="flex items-center justify-between mb-3">
+              <h4 className="font-medium text-gray-900">Quick Actions</h4>
+              <Plus className="w-5 h-5 text-primary-600" />
+            </div>
+            <div className="space-y-2">
+              <button className="w-full text-left text-sm text-primary-600 hover:text-primary-700">
+                Generate Compliance Report
+              </button>
+              <button className="w-full text-left text-sm text-primary-600 hover:text-primary-700">
+                Schedule Audit
+              </button>
+              <button className="w-full text-left text-sm text-primary-600 hover:text-primary-700">
+                Update Policy
+              </button>
+            </div>
+            <button className="w-full mt-3 text-primary-600 hover:text-primary-700 text-sm font-medium">
+              More Actions →
+            </button>
+          </div>
         </div>
       </div>
     </div>

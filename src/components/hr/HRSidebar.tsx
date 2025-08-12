@@ -16,7 +16,6 @@ import {
   LogOut,
   ChevronDown,
   Target,
-  Award,
   TrendingUp,
   Building,
   Briefcase,
@@ -85,25 +84,14 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
       ]
     },
     {
-      name: 'Performance Management',
+      name: 'Performance & Learning',
       icon: BarChart3,
       children: [
         { name: 'Performance Reviews', href: '/hr/performance' },
         { name: 'Goal Management', href: '/hr/goals' },
-        { name: 'Performance Analytics', href: '/hr/performance-analytics' },
-        { name: 'Feedback Systems', href: '/hr/feedback' },
-        { name: 'Career Development', href: '/hr/career-development' }
-      ]
-    },
-    {
-      name: 'Learning & Development',
-      icon: Award,
-      children: [
         { name: 'Training Programs', href: '/hr/training' },
         { name: 'Skill Management', href: '/hr/skills' },
-        { name: 'Certification Tracking', href: '/hr/certifications' },
-        { name: 'Learning Analytics', href: '/hr/learning-analytics' },
-        { name: 'Mentorship Programs', href: '/hr/mentorship' }
+        { name: 'Career Development', href: '/hr/career-development' }
       ]
     },
     {
@@ -118,35 +106,24 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
       ]
     },
     {
-      name: 'Documents & Policies',
+      name: 'Documents & Compliance',
       icon: FileText,
       children: [
         { name: 'Document Library', href: '/hr/documents' },
-        { name: 'Employee Contracts', href: '/hr/contracts' },
         { name: 'HR Policies', href: '/hr/policies' },
-        { name: 'Compliance Documents', href: '/hr/compliance-docs' },
-        { name: 'Templates', href: '/hr/templates' }
-      ]
-    },
-    {
-      name: 'Compliance & Legal',
-      icon: Shield,
-      children: [
         { name: 'Compliance Overview', href: '/hr/compliance' },
         { name: 'Audit Management', href: '/hr/audit' },
-        { name: 'Legal Requirements', href: '/hr/legal' },
-        { name: 'Risk Management', href: '/hr/risk' },
-        { name: 'Data Privacy', href: '/hr/privacy' }
+        { name: 'Legal Requirements', href: '/hr/legal' }
       ]
     },
     {
       name: 'Analytics & Reports',
       icon: TrendingUp,
       children: [
-        { name: 'HR Dashboard', href: '/hr/hr-dashboard' },
         { name: 'Custom Reports', href: '/hr/reports' },
         { name: 'Workforce Analytics', href: '/hr/workforce-analytics' },
-        { name: 'Predictive Analytics', href: '/hr/predictive' },
+        { name: 'Performance Analytics', href: '/hr/performance-analytics' },
+        { name: 'Learning Analytics', href: '/hr/learning-analytics' },
         { name: 'Executive Reports', href: '/hr/executive-reports' }
       ]
     },
@@ -209,11 +186,11 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
 
       {/* Sidebar */}
       <div className={`
-        fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out
+        fixed inset-y-0 left-0 z-50 w-64 bg-white shadow-lg transform transition-transform duration-300 ease-in-out flex flex-col
         ${isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'}
       `}>
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex-shrink-0 flex items-center justify-between p-6 border-b border-gray-200">
           <div className="flex items-center">
             <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center mr-3">
               <div className="w-4 h-4 bg-white rounded-sm"></div>
@@ -225,14 +202,14 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
           </div>
           <button
             onClick={onClose}
-            className="lg:hidden p-1 hover:bg-gray-100 rounded"
+            className="lg:hidden p-1 hover:bg-gray-100 rounded focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1"
           >
             <X size={20} />
           </button>
         </div>
 
-        {/* Navigation */}
-        <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto">
+                {/* Navigation - Scrollable */}
+        <nav className="flex-1 px-4 py-6 space-y-2 overflow-y-auto scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
           {navigation.map((item) => {
             if (item.href) {
               // Single menu item
@@ -241,7 +218,7 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
                   key={item.name}
                   to={item.href}
                   className={`
-                    flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200
+                    flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1
                     ${isActive(item.href)
                       ? 'bg-primary-50 text-primary-700 border-r-2 border-primary-600'
                       : 'text-gray-700 hover:bg-gray-100'
@@ -266,8 +243,14 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
                 <div key={item.name}>
                   <button
                     onClick={() => toggleMenu(item.name)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        toggleMenu(item.name)
+                      }
+                    }}
                     className={`
-                      w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200
+                      w-full flex items-center justify-between px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1
                       ${hasActiveChild
                         ? 'bg-primary-50 text-primary-700'
                         : 'text-gray-700 hover:bg-gray-100'
@@ -291,7 +274,7 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
                           key={child.name}
                           to={child.href}
                           className={`
-                            block px-3 py-2 text-sm rounded-lg transition-colors duration-200
+                            block px-3 py-2 text-sm rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1
                             ${isActive(child.href)
                               ? 'bg-primary-100 text-primary-700'
                               : 'text-gray-600 hover:bg-gray-50'
@@ -309,8 +292,8 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
           })}
         </nav>
 
-        {/* Footer */}
-        <div className="p-4 border-t border-gray-200">
+        {/* Footer - Fixed at bottom */}
+        <div className="flex-shrink-0 p-4 border-t border-gray-200 bg-white">
           <div className="flex items-center px-3 py-2 text-sm text-gray-700">
             <div className="w-8 h-8 bg-gray-200 rounded-full mr-3 flex items-center justify-center">
               <span className="text-xs font-medium">HR</span>
@@ -320,7 +303,7 @@ const HRSidebar = ({ isOpen, onClose }: HRSidebarProps) => {
               <p className="text-xs text-gray-500">hr@company.com</p>
             </div>
           </div>
-          <button className="w-full mt-3 flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200">
+          <button className="w-full mt-3 flex items-center px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-1">
             <LogOut size={20} className="mr-3" />
             Sign Out
           </button>

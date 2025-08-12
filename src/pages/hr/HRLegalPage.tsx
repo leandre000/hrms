@@ -1,18 +1,13 @@
 import React, { useState } from 'react'
 import { 
-  Scale, 
   FileText, 
   AlertTriangle, 
   CheckCircle, 
-  Clock, 
   Eye, 
   Edit,
   Plus,
   Search,
-  Filter,
   Download,
-  Calendar,
-  Users,
   Shield,
   Gavel,
   BookOpen
@@ -41,7 +36,7 @@ interface ComplianceRequirement {
   reviewDate: string
   status: 'compliant' | 'non-compliant' | 'pending' | 'under-review'
   description: string
-  impact: 'low' | 'medium' | 'high'
+  impact: 'low' | 'medium' | 'high' | 'critical'
   lastAudit: string
 }
 

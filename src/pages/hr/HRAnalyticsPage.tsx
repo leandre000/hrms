@@ -1,5 +1,5 @@
 import React from 'react'
-import { BarChart3, TrendingUp, Users, Target, Calendar, DollarSign } from 'lucide-react'
+import { BarChart3, TrendingUp, Users, Target, Shield } from 'lucide-react'
 
 const HRAnalyticsPage = () => {
   const hrMetrics = {
@@ -240,6 +240,81 @@ const HRAnalyticsPage = () => {
                 <li>• Focus on retention strategies for Sales team</li>
                 <li>• Implement targeted training programs</li>
               </ul>
+            </div>
+          </div>
+        </div>
+
+        {/* Compliance Analytics */}
+        <div className="mt-8 bg-green-50 p-6 rounded-lg border border-green-200">
+          <h2 className="text-lg font-semibold text-green-900 mb-4 flex items-center">
+            <Shield className="w-5 h-5 mr-2" />
+            Compliance Analytics
+          </h2>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm border">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Compliance Status Overview</h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-600">Policies Compliance</span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-32 bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="h-2 rounded-full bg-green-500"
+                        style={{ width: '87%' }}
+                      ></div>
+                    </div>
+                    <span className="text-gray-900 font-medium w-12">87%</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-600">Training Completion</span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-32 bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="h-2 rounded-full bg-blue-500"
+                        style={{ width: '92%' }}
+                      ></div>
+                    </div>
+                    <span className="text-gray-900 font-medium w-12">92%</span>
+                  </div>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-gray-600">Audit Compliance</span>
+                  <div className="flex items-center gap-3">
+                    <div className="w-32 bg-gray-200 rounded-full h-2">
+                      <div 
+                        className="h-2 rounded-full bg-green-500"
+                        style={{ width: '95%' }}
+                      ></div>
+                    </div>
+                    <span className="text-gray-900 font-medium w-12">95%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-sm border">
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Risk Assessment</h3>
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-3 bg-red-50 rounded-lg">
+                  <span className="text-gray-900">High Risk Areas</span>
+                  <span className="text-red-600 font-bold">3</span>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-yellow-50 rounded-lg">
+                  <span className="text-gray-900">Medium Risk Areas</span>
+                  <span className="text-yellow-600 font-bold">7</span>
+                </div>
+                <div className="flex items-center justify-between p-3 bg-green-50 rounded-lg">
+                  <span className="text-gray-900">Low Risk Areas</span>
+                  <span className="text-green-600 font-bold">12</span>
+                </div>
+                <div className="mt-4 p-3 bg-blue-50 rounded-lg">
+                  <div className="text-sm text-blue-800">
+                    <div className="font-medium">Next Audit Due:</div>
+                    <div>Q2 2024 - Regulatory Compliance</div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

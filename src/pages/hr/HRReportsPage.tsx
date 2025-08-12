@@ -11,7 +11,8 @@ import {
   PieChart,
   Activity,
   Clock,
-  Eye
+  Eye,
+  Shield
 } from 'lucide-react'
 
 interface Report {
@@ -114,11 +115,55 @@ const mockReports: Report[] = [
     size: '1.2 MB',
     format: 'Excel',
     description: 'Leave patterns and absence management insights'
+  },
+  {
+    id: '9',
+    name: 'Compliance Risk Assessment',
+    type: 'Compliance',
+    category: 'Risk Management',
+    lastGenerated: '2024-01-16',
+    status: 'ready',
+    size: '3.8 MB',
+    format: 'PDF',
+    description: 'Comprehensive risk assessment for all HR policies and procedures'
+  },
+  {
+    id: '10',
+    name: 'Regulatory Compliance Dashboard',
+    type: 'Regulatory',
+    category: 'Compliance',
+    lastGenerated: '2024-01-14',
+    status: 'ready',
+    size: '2.9 MB',
+    format: 'PDF',
+    description: 'Real-time dashboard showing regulatory compliance status across all areas'
+  },
+  {
+    id: '11',
+    name: 'Audit Findings Report',
+    type: 'Compliance',
+    category: 'Audit',
+    lastGenerated: '2024-01-12',
+    status: 'ready',
+    size: '4.5 MB',
+    format: 'PDF',
+    description: 'Detailed findings from latest internal and external compliance audits'
+  },
+  {
+    id: '12',
+    name: 'Policy Compliance Matrix',
+    type: 'Compliance',
+    category: 'Legal',
+    lastGenerated: '2024-01-18',
+    status: 'ready',
+    size: '2.1 MB',
+    format: 'Excel',
+    description: 'Matrix showing compliance status of all policies against regulatory requirements'
   }
 ]
 
-const reportTypes = ['All', 'Analytics', 'Financial', 'Operational', 'Compliance']
-const categories = ['All', 'Workforce', 'Compensation', 'Performance', 'Learning', 'Legal', 'Talent', 'Benefits', 'Attendance']
+const reportTypes = ['All', 'Analytics', 'Financial', 'Operational', 'Compliance', 'Regulatory']
+const categories = ['All', 'Workforce', 'Compensation', 'Performance', 'Learning', 'Legal', 'Talent', 'Benefits', 'Attendance', 'Compliance', 'Risk Management', 'Audit']
 const formats = ['All', 'PDF', 'Excel', 'CSV', 'PowerPoint']
 
 const HRReportsPage: React.FC = () => {
@@ -225,6 +270,48 @@ const HRReportsPage: React.FC = () => {
             </div>
             <div className="p-3 bg-red-100 rounded-lg">
               <Activity className="w-6 h-6 text-red-600" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Compliance Reports Overview */}
+      <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 mb-6 border border-blue-200">
+        <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center">
+          <Shield className="w-5 h-5 mr-2" />
+          Compliance Reports Overview
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+          <div className="bg-white rounded-lg p-4 border border-blue-200">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-blue-600">
+                {mockReports.filter(r => r.type === 'Compliance' || r.type === 'Regulatory').length}
+              </p>
+              <p className="text-sm text-blue-800">Compliance Reports</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-green-200">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-green-600">
+                {mockReports.filter(r => r.category === 'Risk Management').length}
+              </p>
+              <p className="text-sm text-green-800">Risk Reports</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-purple-200">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-purple-600">
+                {mockReports.filter(r => r.category === 'Audit').length}
+              </p>
+              <p className="text-sm text-purple-800">Audit Reports</p>
+            </div>
+          </div>
+          <div className="bg-white rounded-lg p-4 border border-orange-200">
+            <div className="text-center">
+              <p className="text-2xl font-bold text-orange-600">
+                {mockReports.filter(r => r.category === 'Legal').length}
+              </p>
+              <p className="text-sm text-orange-800">Legal Reports</p>
             </div>
           </div>
         </div>

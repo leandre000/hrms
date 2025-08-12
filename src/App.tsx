@@ -17,6 +17,25 @@ import ManagerDashboard from '@/pages/manager/ManagerDashboard'
 import HRDashboard from '@/pages/hr/HRDashboard'
 import AuditorDashboard from '@/pages/auditor/AuditorDashboard'
 import TrainerDashboard from '@/pages/trainer/TrainerDashboard'
+import ProgramsPage from '@/pages/trainer/ProgramsPage'
+import CreateProgramPage from '@/pages/trainer/CreateProgramPage'
+import TemplatesPage from '@/pages/trainer/TemplatesPage'
+import ArchivedProgramsPage from '@/pages/trainer/ArchivedProgramsPage'
+import CoursesPage from '@/pages/trainer/CoursesPage'
+import CreateCoursePage from '@/pages/trainer/CreateCoursePage'
+import ContentLibraryPage from '@/pages/trainer/ContentLibraryPage'
+import CategoriesPage from '@/pages/trainer/CategoriesPage'
+import LearningPathsPage from '@/pages/trainer/LearningPathsPage'
+import LearnersPage from '@/pages/trainer/LearnersPage'
+import EnrollmentManagementPage from '@/pages/trainer/EnrollmentManagementPage'
+import LearningGroupsPage from '@/pages/trainer/LearningGroupsPage'
+import IndividualProgressPage from '@/pages/trainer/IndividualProgressPage'
+import SkillAssessmentsPage from '@/pages/trainer/SkillAssessmentsPage'
+import TrainingCalendarPage from '@/pages/trainer/TrainingCalendarPage'
+import CreateAssessmentPage from '@/pages/trainer/CreateAssessmentPage'
+import QuestionBankPage from '@/pages/trainer/QuestionBankPage'
+import QuizResultsPage from '@/pages/trainer/QuizResultsPage'
+import GradingPage from '@/pages/trainer/GradingPage'
 
 // Employee Pages
 import ProfilePage from '@/pages/employee/ProfilePage'
@@ -67,7 +86,7 @@ import AdminFeedbackPage from '@/pages/admin/FeedbackPage'
 import AdminDocumentsPage from '@/pages/admin/DocumentsPage'
 import ContractsPage from '@/pages/admin/ContractsPage'
 import AdminPoliciesPage from '@/pages/admin/PoliciesPage'
-import TemplatesPage from '@/pages/admin/TemplatesPage'
+import AdminTemplatesPage from '@/pages/admin/TemplatesPage'
 import AdminCompliancePage from '@/pages/admin/CompliancePage'
 import AuditPage from '@/pages/admin/AuditPage'
 import AdminReportsPage from '@/pages/admin/ReportsPage'
@@ -162,11 +181,11 @@ import HRSkillsPage from '@/pages/hr/SkillsPage'
 import HRUserManagementPage from '@/pages/hr/UserManagementPage'
 import HRExecutiveReportsPage from '@/pages/hr/ExecutiveReportsPage'
 import HRWorkforceAnalyticsPage from '@/pages/hr/WorkforceAnalyticsPage'
-import HRReportsPage from '@/pages/hr/ReportsPage'
-import HRPrivacyPage from '@/pages/hr/PrivacyPage'
-import HRRiskPage from '@/pages/hr/RiskPage'
-import HRLegalPage from '@/pages/hr/LegalPage'
-import HRAuditPage from '@/pages/hr/AuditPage'
+import HRReportsPage from '@/pages/hr/HRReportsPage'
+import HRPrivacyPage from '@/pages/hr/HRPrivacyPage'
+import HRRiskPage from '@/pages/hr/HRRiskPage'
+import HRLegalPage from '@/pages/hr/HRLegalPage'
+import HRAuditPage from '@/pages/hr/HRAuditPage'
 import HRTemplatesPage from '@/pages/hr/TemplatesPage'
 import HRReportingPage from '@/pages/hr/ReportingPage'
 import HRFeedbackPage from '@/pages/hr/FeedbackPage'
@@ -220,7 +239,7 @@ function App() {
             <Route path="documents" element={<AdminDocumentsPage />} />
             <Route path="contracts" element={<ContractsPage />} />
             <Route path="policies" element={<AdminPoliciesPage />} />
-            <Route path="templates" element={<TemplatesPage />} />
+            <Route path="templates" element={<AdminTemplatesPage />} />
             <Route path="compliance" element={<AdminCompliancePage />} />
             <Route path="audit" element={<AuditPage />} />
             <Route path="reports" element={<AdminReportsPage />} />
@@ -385,7 +404,25 @@ function App() {
           {/* Trainer Routes */}
           <Route path="/trainer" element={<TrainerLayout />}>
             <Route index element={<TrainerDashboard />} />
-            {/* Add more trainer routes here as needed */}
+            <Route path="programs" element={<ProgramsPage />} />
+            <Route path="create-program" element={<CreateProgramPage />} />
+            <Route path="templates" element={<TemplatesPage />} />
+            <Route path="archived" element={<ArchivedProgramsPage />} />
+            <Route path="courses" element={<CoursesPage />} />
+            <Route path="create-course" element={<CreateCoursePage />} />
+            <Route path="content-library" element={<ContentLibraryPage />} />
+            <Route path="categories" element={<CategoriesPage />} />
+            <Route path="learning-paths" element={<LearningPathsPage />} />
+            <Route path="learners" element={<LearnersPage />} />
+            <Route path="enrollments" element={<EnrollmentManagementPage />} />
+            <Route path="groups" element={<LearningGroupsPage />} />
+            <Route path="individual-progress" element={<IndividualProgressPage />} />
+            <Route path="assessments" element={<SkillAssessmentsPage />} />
+            <Route path="create-assessment" element={<CreateAssessmentPage />} />
+            <Route path="question-bank" element={<QuestionBankPage />} />
+            <Route path="quiz-results" element={<QuizResultsPage />} />
+            <Route path="grading" element={<GradingPage />} />
+            <Route path="calendar" element={<TrainingCalendarPage />} />
           </Route>
         </Routes>
       </div>
