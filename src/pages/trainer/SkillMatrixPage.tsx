@@ -9,14 +9,16 @@ import {
   Users, 
   Target,
   BarChart3,
-  Grid3X3,
+  Grid3x3,
   User,
   Star,
   Award,
   Clock
 } from 'lucide-react'
 
-interface Skill {
+
+
+  interface Skill {
   id: string
   name: string
   category: string
@@ -242,7 +244,7 @@ const SkillMatrixPage = () => {
                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
               }`}
             >
-              <Grid3X3 className="w-4 h-4 inline mr-2" />
+              <Grid3x3 className="w-4 h-4 inline mr-2" />
               Matrix View
             </button>
             <button

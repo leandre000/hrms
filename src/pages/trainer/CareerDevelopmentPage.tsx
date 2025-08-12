@@ -416,7 +416,7 @@ const CareerDevelopmentPage = () => {
                 </div>
                 <div>
                   <p className="text-sm text-gray-500">Timeline</p>
-                  <p className="font-medium">{plan.duration}</p>
+                  <p className="font-medium">{plan.startDate} - {plan.targetDate}</p>
                 </div>
               </div>
               

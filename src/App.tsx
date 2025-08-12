@@ -47,6 +47,20 @@ import PersonalDevelopmentPlansPage from '@/pages/trainer/PersonalDevelopmentPla
 import RenewalManagementPage from '@/pages/trainer/RenewalManagementPage'
 import CertificationTestsPage from '@/pages/trainer/CertificationTestsPage'
 import LiveSessionsPage from '@/pages/trainer/LiveSessionsPage'
+import WebinarManagementPage from '@/pages/trainer/WebinarManagementPage'
+import RoomBookingPage from '@/pages/trainer/RoomBookingPage'
+import InstructorSchedulePage from '@/pages/trainer/InstructorSchedulePage'
+import TrainingAnalyticsPage from '@/pages/trainer/TrainingAnalyticsPage'
+import CompletionReportsPage from '@/pages/trainer/CompletionReportsPage'
+import EffectivenessAnalysisPage from '@/pages/trainer/EffectivenessAnalysisPage'
+import ROIAnalysisPage from '@/pages/trainer/ROIAnalysisPage'
+import CustomTrainerReportsPage from '@/pages/trainer/CustomReportsPage'
+import LearningAnalyticsPage from '@/pages/trainer/LearningAnalyticsPage'
+import PerformancePredictionsPage from '@/pages/trainer/PerformancePredictionsPage'
+import AdaptiveLearningPage from '@/pages/trainer/AdaptiveLearningPage'
+import AnnouncementsPage from '@/pages/trainer/AnnouncementsPage'
+import TrainerProfilePage from '@/pages/trainer/TrainerProfilePage'
+import TrainerSettingsPage from '@/pages/trainer/TrainerSettingsPage'
 
 // Employee Pages
 import ProfilePage from '@/pages/employee/ProfilePage'
@@ -214,6 +228,22 @@ import HRCostCentersPage from '@/pages/hr/CostCentersPage'
 import HRCompliancePage from '@/pages/hr/CompliancePage'
 import HRDataManagementPage from '@/pages/hr/DataManagementPage'
 import HRRolesPage from '@/pages/hr/RolesPage'
+import AITrainingRecommendationsPage from '@/pages/trainer/AITrainingRecommendationsPage'
+import DiscussionForumsPage from '@/pages/trainer/DiscussionForumsPage'
+import LearnerFeedbackPage from '@/pages/trainer/LearnerFeedbackPage'
+import InstructorMessagesPage from '@/pages/trainer/InstructorMessagesPage'
+import ResourceLibraryPage from '@/pages/trainer/ResourceLibraryPage'
+import UploadMaterialsPage from '@/pages/trainer/UploadMaterialsPage'
+import DocumentManagementPage from '@/pages/trainer/DocumentManagementPage'
+import ExternalResourcesPage from '@/pages/trainer/ExternalResourcesPage'
+import CertificationsPage from '@/pages/trainer/CertificationsPage'
+import TrainerResourcesPage from '@/pages/trainer/ResourcesPage'
+import TrainerDocumentsPage from '@/pages/trainer/DocumentsPage'
+import PredictionsPage from '@/pages/trainer/PredictionsPage'
+import ForumsPage from '@/pages/trainer/ForumsPage'
+import TrainerFeedbackPage from '@/pages/trainer/FeedbackPage'
+import TrainerMessagesPage from '@/pages/trainer/MessagesPage'
+
 
 function App() {
   return (
@@ -445,6 +475,35 @@ function App() {
             <Route path="renewals" element={<RenewalManagementPage />} />
             <Route path="certification-tests" element={<CertificationTestsPage />} />
             <Route path="live-sessions" element={<LiveSessionsPage />} />
+            <Route path="webinars" element={<WebinarManagementPage />} />
+            <Route path="room-booking" element={<RoomBookingPage />} />
+            <Route path="instructor-schedule" element={<InstructorSchedulePage />} />
+            <Route path="analytics" element={<TrainingAnalyticsPage />} />
+            <Route path="completion-reports" element={<CompletionReportsPage />} />
+            <Route path="effectiveness" element={<EffectivenessAnalysisPage />} />
+            <Route path="roi-analysis" element={<ROIAnalysisPage />} />
+            <Route path="custom-reports" element={<CustomReportsPage />} />
+            <Route path="ai-recommendations" element={<AITrainingRecommendationsPage />} />
+            <Route path="learning-analytics" element={<LearningAnalyticsPage />} />
+            <Route path="performance-predictions" element={<PerformancePredictionsPage />} />
+            <Route path="adaptive-learning" element={<AdaptiveLearningPage />} />
+            <Route path="announcements" element={<AnnouncementsPage />} />
+            <Route path="discussion-forums" element={<DiscussionForumsPage />} />
+            <Route path="learner-feedback" element={<LearnerFeedbackPage />} />
+            <Route path="instructor-messages" element={<InstructorMessagesPage />} />
+            <Route path="resource-library" element={<ResourceLibraryPage />} />
+            <Route path="upload-materials" element={<UploadMaterialsPage />} />
+            <Route path="document-management" element={<DocumentManagementPage />} />
+            <Route path="external-resources" element={<ExternalResourcesPage />} />
+            <Route path="certifications" element={<CertificationsPage />} />
+            <Route path="resources" element={<TrainerResourcesPage />} />
+            <Route path="documents" element={<TrainerDocumentsPage />} />
+            <Route path="predictions" element={<PredictionsPage />} />
+            <Route path="forums" element={<ForumsPage />} />
+            <Route path="feedback" element={<TrainerFeedbackPage />} />
+            <Route path="messages" element={<TrainerMessagesPage />} />
+            <Route path="profile" element={<TrainerProfilePage />} />
+            <Route path="settings" element={<TrainerSettingsPage />} />
           </Route>
         </Routes>
       </div>
