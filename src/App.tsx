@@ -36,6 +36,17 @@ import CreateAssessmentPage from '@/pages/trainer/CreateAssessmentPage'
 import QuestionBankPage from '@/pages/trainer/QuestionBankPage'
 import QuizResultsPage from '@/pages/trainer/QuizResultsPage'
 import GradingPage from '@/pages/trainer/GradingPage'
+import IssueCertificatesPage from '@/pages/trainer/IssueCertificatesPage'
+import CertificateTemplatesPage from '@/pages/trainer/CertificateTemplatesPage'
+import VerificationSystemPage from '@/pages/trainer/VerificationSystemPage'
+import SkillMatrixPage from '@/pages/trainer/SkillMatrixPage'
+import CompetencyFrameworkPage from '@/pages/trainer/CompetencyFrameworkPage'
+import SkillGapAnalysisPage from '@/pages/trainer/SkillGapAnalysisPage'
+import CareerDevelopmentPage from '@/pages/trainer/CareerDevelopmentPage'
+import PersonalDevelopmentPlansPage from '@/pages/trainer/PersonalDevelopmentPlansPage'
+import RenewalManagementPage from '@/pages/trainer/RenewalManagementPage'
+import CertificationTestsPage from '@/pages/trainer/CertificationTestsPage'
+import LiveSessionsPage from '@/pages/trainer/LiveSessionsPage'
 
 // Employee Pages
 import ProfilePage from '@/pages/employee/ProfilePage'
@@ -423,6 +434,17 @@ function App() {
             <Route path="quiz-results" element={<QuizResultsPage />} />
             <Route path="grading" element={<GradingPage />} />
             <Route path="calendar" element={<TrainingCalendarPage />} />
+            <Route path="issue-certificates" element={<IssueCertificatesPage />} />
+            <Route path="certificate-templates" element={<CertificateTemplatesPage />} />
+            <Route path="verification" element={<VerificationSystemPage />} />
+            <Route path="skill-matrix" element={<SkillMatrixPage />} />
+            <Route path="competency" element={<CompetencyFrameworkPage />} />
+            <Route path="skill-gaps" element={<SkillGapAnalysisPage />} />
+            <Route path="career-development" element={<CareerDevelopmentPage />} />
+            <Route path="pdp" element={<PersonalDevelopmentPlansPage />} />
+            <Route path="renewals" element={<RenewalManagementPage />} />
+            <Route path="certification-tests" element={<CertificationTestsPage />} />
+            <Route path="live-sessions" element={<LiveSessionsPage />} />
           </Route>
         </Routes>
       </div>
