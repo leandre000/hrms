@@ -1,249 +1,282 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import LandingPage from '@/pages/LandingPage'
-import LoginPage from '@/pages/LoginPage'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import LandingPage from "@/pages/LandingPage";
+import LoginPage from "@/pages/LoginPage";
 
 // Layouts
-import AdminLayout from '@/layouts/AdminLayout'
-import EmployeeLayout from '@/layouts/EmployeeLayout'
-import ManagerLayout from '@/layouts/ManagerLayout'
-import HRLayout from '@/layouts/HRLayout'
-import AuditorLayout from '@/layouts/AuditorLayout'
-import TrainerLayout from '@/layouts/TrainerLayout'
+import AdminLayout from "@/layouts/AdminLayout";
+import EmployeeLayout from "@/layouts/EmployeeLayout";
+import ManagerLayout from "@/layouts/ManagerLayout";
+import HRLayout from "@/layouts/HRLayout";
+import AuditorLayout from "@/layouts/AuditorLayout";
+import TrainerLayout from "@/layouts/TrainerLayout";
 
 // Dashboard Pages
-import DashboardPage from '@/pages/admin/DashboardPage'
-import EmployeeDashboard from '@/pages/employee/EmployeeDashboard'
-import ManagerDashboard from '@/pages/manager/ManagerDashboard'
-import HRDashboard from '@/pages/hr/HRDashboard'
-import AuditorDashboard from '@/pages/auditor/AuditorDashboard'
-import TrainerDashboard from '@/pages/trainer/TrainerDashboard'
-import ProgramsPage from '@/pages/trainer/ProgramsPage'
-import CreateProgramPage from '@/pages/trainer/CreateProgramPage'
-import TemplatesPage from '@/pages/trainer/TemplatesPage'
-import ArchivedProgramsPage from '@/pages/trainer/ArchivedProgramsPage'
-import CoursesPage from '@/pages/trainer/CoursesPage'
-import CreateCoursePage from '@/pages/trainer/CreateCoursePage'
-import ContentLibraryPage from '@/pages/trainer/ContentLibraryPage'
-import CategoriesPage from '@/pages/trainer/CategoriesPage'
-import LearningPathsPage from '@/pages/trainer/LearningPathsPage'
-import LearnersPage from '@/pages/trainer/LearnersPage'
-import EnrollmentManagementPage from '@/pages/trainer/EnrollmentManagementPage'
-import LearningGroupsPage from '@/pages/trainer/LearningGroupsPage'
-import IndividualProgressPage from '@/pages/trainer/IndividualProgressPage'
-import SkillAssessmentsPage from '@/pages/trainer/SkillAssessmentsPage'
-import TrainingCalendarPage from '@/pages/trainer/TrainingCalendarPage'
-import CreateAssessmentPage from '@/pages/trainer/CreateAssessmentPage'
-import QuestionBankPage from '@/pages/trainer/QuestionBankPage'
-import QuizResultsPage from '@/pages/trainer/QuizResultsPage'
-import GradingPage from '@/pages/trainer/GradingPage'
-import IssueCertificatesPage from '@/pages/trainer/IssueCertificatesPage'
-import CertificateTemplatesPage from '@/pages/trainer/CertificateTemplatesPage'
-import VerificationSystemPage from '@/pages/trainer/VerificationSystemPage'
-import SkillMatrixPage from '@/pages/trainer/SkillMatrixPage'
-import CompetencyFrameworkPage from '@/pages/trainer/CompetencyFrameworkPage'
-import SkillGapAnalysisPage from '@/pages/trainer/SkillGapAnalysisPage'
-import CareerDevelopmentPage from '@/pages/trainer/CareerDevelopmentPage'
-import PersonalDevelopmentPlansPage from '@/pages/trainer/PersonalDevelopmentPlansPage'
-import RenewalManagementPage from '@/pages/trainer/RenewalManagementPage'
-import CertificationTestsPage from '@/pages/trainer/CertificationTestsPage'
-import LiveSessionsPage from '@/pages/trainer/LiveSessionsPage'
-import WebinarManagementPage from '@/pages/trainer/WebinarManagementPage'
-import RoomBookingPage from '@/pages/trainer/RoomBookingPage'
-import InstructorSchedulePage from '@/pages/trainer/InstructorSchedulePage'
-import TrainingAnalyticsPage from '@/pages/trainer/TrainingAnalyticsPage'
-import CompletionReportsPage from '@/pages/trainer/CompletionReportsPage'
-import EffectivenessAnalysisPage from '@/pages/trainer/EffectivenessAnalysisPage'
-import ROIAnalysisPage from '@/pages/trainer/ROIAnalysisPage'
-import CustomTrainerReportsPage from '@/pages/trainer/CustomReportsPage'
-import LearningAnalyticsPage from '@/pages/trainer/LearningAnalyticsPage'
-import PerformancePredictionsPage from '@/pages/trainer/PerformancePredictionsPage'
-import AdaptiveLearningPage from '@/pages/trainer/AdaptiveLearningPage'
-import AnnouncementsPage from '@/pages/trainer/AnnouncementsPage'
-import TrainerProfilePage from '@/pages/trainer/TrainerProfilePage'
-import TrainerSettingsPage from '@/pages/trainer/TrainerSettingsPage'
+import DashboardPage from "@/pages/admin/DashboardPage";
+import EmployeeDashboard from "@/pages/employee/EmployeeDashboard";
+import ManagerDashboard from "@/pages/manager/ManagerDashboard";
+import HRDashboard from "@/pages/hr/HRDashboard";
+import AuditorDashboard from "@/pages/auditor/AuditorDashboard";
+import TrainerDashboard from "@/pages/trainer/TrainerDashboard";
+import ProgramsPage from "@/pages/trainer/ProgramsPage";
+import CreateProgramPage from "@/pages/trainer/CreateProgramPage";
+import TemplatesPage from "@/pages/trainer/TemplatesPage";
+import ArchivedProgramsPage from "@/pages/trainer/ArchivedProgramsPage";
+import CoursesPage from "@/pages/trainer/CoursesPage";
+import CreateCoursePage from "@/pages/trainer/CreateCoursePage";
+import ContentLibraryPage from "@/pages/trainer/ContentLibraryPage";
+import CategoriesPage from "@/pages/trainer/CategoriesPage";
+import LearningPathsPage from "@/pages/trainer/LearningPathsPage";
+import LearnersPage from "@/pages/trainer/LearnersPage";
+import EnrollmentManagementPage from "@/pages/trainer/EnrollmentManagementPage";
+import LearningGroupsPage from "@/pages/trainer/LearningGroupsPage";
+import IndividualProgressPage from "@/pages/trainer/IndividualProgressPage";
+import SkillAssessmentsPage from "@/pages/trainer/SkillAssessmentsPage";
+import TrainingCalendarPage from "@/pages/trainer/TrainingCalendarPage";
+import CreateAssessmentPage from "@/pages/trainer/CreateAssessmentPage";
+import QuestionBankPage from "@/pages/trainer/QuestionBankPage";
+import QuizResultsPage from "@/pages/trainer/QuizResultsPage";
+import GradingPage from "@/pages/trainer/GradingPage";
+import IssueCertificatesPage from "@/pages/trainer/IssueCertificatesPage";
+import CertificateTemplatesPage from "@/pages/trainer/CertificateTemplatesPage";
+import VerificationSystemPage from "@/pages/trainer/VerificationSystemPage";
+import SkillMatrixPage from "@/pages/trainer/SkillMatrixPage";
+import CompetencyFrameworkPage from "@/pages/trainer/CompetencyFrameworkPage";
+import SkillGapAnalysisPage from "@/pages/trainer/SkillGapAnalysisPage";
+import CareerDevelopmentPage from "@/pages/trainer/CareerDevelopmentPage";
+import PersonalDevelopmentPlansPage from "@/pages/trainer/PersonalDevelopmentPlansPage";
+import RenewalManagementPage from "@/pages/trainer/RenewalManagementPage";
+import CertificationTestsPage from "@/pages/trainer/CertificationTestsPage";
+import LiveSessionsPage from "@/pages/trainer/LiveSessionsPage";
+import WebinarManagementPage from "@/pages/trainer/WebinarManagementPage";
+import RoomBookingPage from "@/pages/trainer/RoomBookingPage";
+import InstructorSchedulePage from "@/pages/trainer/InstructorSchedulePage";
+import TrainingAnalyticsPage from "@/pages/trainer/TrainingAnalyticsPage";
+import CompletionReportsPage from "@/pages/trainer/CompletionReportsPage";
+import EffectivenessAnalysisPage from "@/pages/trainer/EffectivenessAnalysisPage";
+import ROIAnalysisPage from "@/pages/trainer/ROIAnalysisPage";
+import CustomTrainerReportsPage from "@/pages/trainer/CustomReportsPage";
+import LearningAnalyticsPage from "@/pages/trainer/LearningAnalyticsPage";
+import PerformancePredictionsPage from "@/pages/trainer/PerformancePredictionsPage";
+import AdaptiveLearningPage from "@/pages/trainer/AdaptiveLearningPage";
+import AnnouncementsPage from "@/pages/trainer/AnnouncementsPage";
+import TrainerProfilePage from "@/pages/trainer/TrainerProfilePage";
+import TrainerSettingsPage from "@/pages/trainer/TrainerSettingsPage";
 
 // Employee Pages
-import ProfilePage from '@/pages/employee/ProfilePage'
-import TimeTrackingPage from '@/pages/employee/TimeTrackingPage'
-import AttendancePage from '@/pages/employee/AttendancePage'
-import OvertimePage from '@/pages/employee/OvertimePage'
-import LeaveRequestPage from '@/pages/employee/LeaveRequestPage'
-import LeaveHistoryPage from '@/pages/employee/LeaveHistoryPage'
-import LeaveBalancePage from '@/pages/employee/LeaveBalancePage'
-import PaystubsPage from '@/pages/employee/PaystubsPage'
-import TaxDocsPage from '@/pages/employee/TaxDocsPage'
-import BenefitsPage from '@/pages/employee/BenefitsPage'
-import PerformancePage from '@/pages/employee/PerformancePage'
-import GoalsPage from '@/pages/employee/GoalsPage'
-import FeedbackPage from '@/pages/employee/FeedbackPage'
-import TrainingPage from '@/pages/employee/TrainingPage'
-import EmployeeCertificationsPage from '@/pages/admin/CertificationsPage'
-import SkillsPage from '@/pages/employee/SkillsPage'
-import DocumentsPage from '@/pages/employee/DocumentsPage'
-import PoliciesPage from '@/pages/employee/PoliciesPage'
-import HandbookPage from '@/pages/employee/HandbookPage'
-import InternalJobsPage from '@/pages/employee/InternalJobsPage'
-import CareerPathPage from '@/pages/employee/CareerPathPage'
-import MentorshipPage from '@/pages/employee/MentorshipPage'
-import DirectoryPage from '@/pages/employee/DirectoryPage'
-import MessagesPage from '@/pages/employee/MessagesPage'
-import SettingsPage from '@/pages/employee/SettingsPage'
+import ProfilePage from "@/pages/employee/ProfilePage";
+import TimeTrackingPage from "@/pages/employee/TimeTracking;
+import AttendancePage from "@/pages/employee/AttendancePage";
+import OvertimePage from "@/pages/employee/OvertimePage";
+import LeaveRequestPage from "@/pages/employee/LeaveRequestPage";
+import LeaveHistoryPage from "@/pages/employee/LeaveHistoryPage";
+import LeaveBalancePage from "@/pages/employee/LeaveBalancePage";
+import PaystubsPage from "@/pages/employee/PaystubsPage";
+import TaxDocsPage from "@/pages/employee/TaxDocsPage";
+import BenefitsPage from "@/pages/employee/BenefitsPage";
+import PerformancePage from "@/pages/employee/PerformancePage";
+import GoalsPage from "@/pages/employee/GoalsPage";
+import FeedbackPage from "@/pages/employee/FeedbackPage";
+import TrainingPage from "@/pages/employee/TrainingPage";
+import EmployeeCertificationsPage from "@/pages/employee/CertificationsPage";
+import SkillsPage from "@/pages/employee/SkillsPage";
+import DocumentsPage from "@/pages/employee/DocumentsPage";
+import PoliciesPage from "@/pages/employee/PoliciesPage";
+import HandbookPage from "@/pages/employee/HandbookPage";
+import InternalJobsPage from "@/pages/employee/InternalJobsPage";
+import CareerPathPage from "@/pages/employee/CareerPathPage";
+import MentorshipPage from "@/pages/employee/MentorshipPage";
+import DirectoryPage from "@/pages/employee/DirectoryPage";
+import MessagesPage from "@/pages/employee/MessagesPage";
+import SettingsPage from "@/pages/employee/SettingsPage";
+
+// Manager Pages
+import TeamOverviewPage from "@/pages/manager/TeamOverviewPage";
+import TeamDirectoryPage from "@/pages/manager/TeamDirectoryPage";
+import TeamPerformancePage from "@/pages/manager/TeamPerformancePage";
+import TeamSchedulePage from "@/pages/manager/TeamSchedulePage";
+import ManagerAttendancePage from "@/pages/manager/AttendancePage";
+import LeaveRequestsPage from "@/pages/manager/LeaveRequestsPage";
+import ManagerOvertimePage from "@/pages/manager/OvertimePage";
+import TimeReportsPage from "@/pages/manager/TimeReportsPage";
+import PerformanceReviewsPage from "@/pages/manager/PerformanceReviewsPage";
+import ManagerGoalsPage from "@/pages/manager/GoalsPage";
+import ManagerFeedbackPage from "@/pages/manager/FeedbackPage";
+import MetricsPage from "@/pages/manager/MetricsPage";
+import ManagerPositionsPage from "@/pages/manager/PositionsPage";
+import ManagerInterviewsPage from "@/pages/manager/InterviewsPage";
+import ManagerCandidatesPage from "@/pages/manager/CandidatesPage";
+import HiringPipelinePage from "@/pages/manager/HiringPipelinePage";
+import ProjectsPage from "@/pages/manager/ProjectsPage";
+import TasksPage from "@/pages/manager/TasksPage";
+import TimelinePage from "@/pages/manager/TimelinePage";
+import ResourcesPage from "@/pages/manager/ResourcesPage";
+import ReportsPage from "@/pages/manager/ReportsPage";
+import AnalyticsPage from "@/pages/manager/AnalyticsPage";
+import BudgetPage from "@/pages/manager/BudgetPage";
+import ProductivityPage from "@/pages/manager/ProductivityPage";
+import TrainingPlansPage from "@/pages/manager/TrainingPlansPage";
+import SkillDevelopmentPage from "@/pages/manager/SkillDevelopmentPage";
+import CareerPlanningPage from "@/pages/manager/CareerPlanningPage";
+import ManagerMentorshipPage from "@/pages/manager/MentorshipPage";
+import CalendarPage from "@/pages/manager/CalendarPage";
+import ManagerMessagesPage from "@/pages/manager/MessagesPage";
+import ManagerProfilePage from "@/pages/manager/ProfilePage";
+import ManagerSettingsPage from "@/pages/manager/SettingsPage";
 
 // Admin Pages
-import EmployeesPage from '@/pages/admin/EmployeesPage'
-import DepartmentsPage from '@/pages/admin/DepartmentsPage'
-import PositionsPage from '@/pages/admin/PositionsPage'
-import AdminDirectoryPage from '@/pages/admin/DirectoryPage'
-import PayrollPage from '@/pages/admin/PayrollPage'
-import JobsPage from '@/pages/admin/JobsPage'
-import CandidatesPage from '@/pages/admin/CandidatesPage'
-import InterviewsPage from '@/pages/admin/InterviewsPage'
-import PipelinePage from '@/pages/admin/PipelinePage'
-import SalariesPage from '@/pages/admin/SalariesPage'
-import AdminTimeTrackingPage from '@/pages/admin/TimeTrackingPage'
-import AdminAttendancePage from '@/pages/admin/AttendancePage'
-import AdminLeavePage from '@/pages/admin/LeavePage'
-import AdminOvertimePage from '@/pages/admin/OvertimePage'
-import AdminPerformancePage from '@/pages/admin/PerformancePage'
-import AdminGoalsPage from '@/pages/admin/GoalsPage'
-import AdminTrainingPage from '@/pages/admin/TrainingPage'
-import AdminFeedbackPage from '@/pages/admin/FeedbackPage'
-import AdminDocumentsPage from '@/pages/admin/DocumentsPage'
-import ContractsPage from '@/pages/admin/ContractsPage'
-import AdminPoliciesPage from '@/pages/admin/PoliciesPage'
-import AdminTemplatesPage from '@/pages/admin/TemplatesPage'
-import AdminCompliancePage from '@/pages/admin/CompliancePage'
-import AuditPage from '@/pages/admin/AuditPage'
-import AdminReportsPage from '@/pages/admin/ReportsPage'
-import AdminCertificationsPage from '@/pages/admin/CertificationsPage'
-import AdminCalendarPage from '@/pages/admin/CalendarPage'
-import AdminMessagesPage from '@/pages/admin/MessagesPage'
-import AdminSettingsPage from '@/pages/admin/SettingsPage'
-import AdminBenefitsPage from '@/pages/admin/BenefitsPage'
-import TaxReportsPage from '@/pages/admin/TaxReportsPage'
+import EmployeesPage from "@/pages/admin/EmployeesPage";
+import DepartmentsPage from "@/pages/admin/DepartmentsPage";
+import PositionsPage from "@/pages/admin/PositionsPage";
+import AdminDirectoryPage from "@/pages/admin/DirectoryPage";
+import PayrollPage from "@/pages/admin/PayrollPage";
+import JobsPage from "@/pages/admin/JobsPage";
+import CandidatesPage from "@/pages/admin/CandidatesPage";
+import InterviewsPage from "@/pages/admin/InterviewsPage";
+import PipelinePage from "@/pages/admin/PipelinePage";
+import SalariesPage from "@/pages/admin/SalariesPage";
+import AdminTimeTrackingPage from "@/pages/admin/TimeTrackingPage";
+import AdminAttendancePage from "@/pages/admin/AttendancePage";
+import AdminLeavePage from "@/pages/admin/LeavePage";
+import AdminOvertimePage from "@/pages/admin/OvertimePage";
+import AdminPerformancePage from "@/pages/admin/PerformancePage";
+import AdminGoalsPage from "@/pages/admin/GoalsPage";
+import AdminTrainingPage from "@/pages/admin/TrainingPage";
+import AdminFeedbackPage from "@/pages/admin/FeedbackPage";
+import AdminDocumentsPage from "@/pages/admin/DocumentsPage";
+import ContractsPage from "@/pages/admin/ContractsPage";
+import AdminPoliciesPage from "@/pages/admin/PoliciesPage";
+import AdminTemplatesPage from "@/pages/admin/TemplatesPage";
+import AdminCompliancePage from "@/pages/admin/CompliancePage";
+import AuditPage from "@/pages/admin/AuditPage";
+import AdminReportsPage from "@/pages/admin/ReportsPage";
+import AdminCertificationsPage from "@/pages/admin/CertificationsPage";
+import AdminCalendarPage from "@/pages/admin/CalendarPage";
+import AdminMessagesPage from "@/pages/admin/MessagesPage";
+import AdminSettingsPage from "@/pages/admin/SettingsPage";
+import AdminBenefitsPage from "@/pages/admin/BenefitsPage";
+import TaxReportsPage from "@/pages/admin/TaxReportsPage";
 
 // Auditor Pages
-import CompliancePage from '@/pages/auditor/CompliancePage'
-import PolicyAdherencePage from '@/pages/auditor/PolicyAdherencePage'
-import RegulatoryReportsPage from '@/pages/auditor/RegulatoryReportsPage'
-import RiskAssessmentPage from '@/pages/auditor/RiskAssessmentPage'
-import ViolationsPage from '@/pages/auditor/ViolationsPage'
-import ActivityLogsPage from '@/pages/auditor/ActivityLogsPage'
-import AccessLogsPage from '@/pages/auditor/AccessLogsPage'
-import ChangeHistoryPage from '@/pages/auditor/ChangeHistoryPage'
-import SecurityEventsPage from '@/pages/auditor/SecurityEventsPage'
-import FailedLoginsPage from '@/pages/auditor/FailedLoginsPage'
-import PayrollAuditPage from '@/pages/auditor/PayrollAuditPage'
-import ExpenseAuditPage from '@/pages/auditor/ExpenseAuditPage'
-import SalaryDiscrepanciesPage from '@/pages/auditor/SalaryDiscrepanciesPage'
-import TaxCompliancePage from '@/pages/auditor/TaxCompliancePage'
-import BudgetAnalysisPage from '@/pages/auditor/BudgetAnalysisPage'
-import EmployeeRecordsPage from '@/pages/auditor/EmployeeRecordsPage'
-import DocumentVerificationPage from '@/pages/auditor/DocumentVerificationPage'
-import ContractCompliancePage from '@/pages/auditor/ContractCompliancePage'
-import LeaveAttendancePage from '@/pages/auditor/LeaveAttendancePage'
-import PerformanceRecordsPage from '@/pages/auditor/PerformanceRecordsPage'
-import AuditorDocumentsPage from '@/pages/auditor/DocumentsPage'
-import DocumentVersionsPage from '@/pages/auditor/DocumentVersionsPage'
-import AccessControlPage from '@/pages/auditor/AccessControlPage'
-import DocumentExpiryPage from '@/pages/auditor/DocumentExpiryPage'
-import DigitalSignaturesPage from '@/pages/auditor/DigitalSignaturesPage'
-import AuditReportsPage from '@/pages/auditor/AuditReportsPage'
-import ComplianceDashboardPage from '@/pages/auditor/ComplianceDashboardPage'
-import TrendAnalysisPage from '@/pages/auditor/TrendAnalysisPage'
-import CustomReportsPage from '@/pages/auditor/CustomReportsPage'
-import ExecutiveSummaryPage from '@/pages/auditor/ExecutiveSummaryPage'
-import DataPrivacyPage from '@/pages/auditor/DataPrivacyPage'
-import GDPRPage from '@/pages/auditor/GDPRPage'
-import DataProcessingPage from '@/pages/auditor/DataProcessingPage'
-import ConsentManagementPage from '@/pages/auditor/ConsentManagementPage'
-import DataBreachesPage from '@/pages/auditor/DataBreachesPage'
-import AdvancedSearchPage from '@/pages/auditor/AdvancedSearchPage'
-import InvestigationsPage from '@/pages/auditor/InvestigationsPage'
-import ForensicAnalysisPage from '@/pages/auditor/ForensicAnalysisPage'
-import EvidencePage from '@/pages/auditor/EvidencePage'
-import ExportsPage from '@/pages/auditor/ExportsPage'
-import AuditorProfilePage from '@/pages/auditor/ProfilePage'
-import AuditorSettingsPage from '@/pages/auditor/SettingsPage'
+import CompliancePage from "@/pages/auditor/CompliancePage";
+import PolicyAdherencePage from "@/pages/auditor/PolicyAdherencePage";
+import RegulatoryReportsPage from "@/pages/auditor/RegulatoryReportsPage";
+import RiskAssessmentPage from "@/pages/auditor/RiskAssessmentPage";
+import ViolationsPage from "@/pages/auditor/ViolationsPage";
+import ActivityLogsPage from "@/pages/auditor/ActivityLogsPage";
+import AccessLogsPage from "@/pages/auditor/AccessLogsPage";
+import ChangeHistoryPage from "@/pages/auditor/ChangeHistoryPage";
+import SecurityEventsPage from "@/pages/auditor/SecurityEventsPage";
+import FailedLoginsPage from "@/pages/auditor/FailedLoginsPage";
+import PayrollAuditPage from "@/pages/auditor/PayrollAuditPage";
+import ExpenseAuditPage from "@/pages/auditor/ExpenseAuditPage";
+import SalaryDiscrepanciesPage from "@/pages/auditor/SalaryDiscrepanciesPage";
+import TaxCompliancePage from "@/pages/auditor/TaxCompliancePage";
+import BudgetAnalysisPage from "@/pages/auditor/BudgetAnalysisPage";
+import EmployeeRecordsPage from "@/pages/auditor/EmployeeRecordsPage";
+import DocumentVerificationPage from "@/pages/auditor/DocumentVerificationPage";
+import ContractCompliancePage from "@/pages/auditor/ContractCompliancePage";
+import LeaveAttendancePage from "@/pages/auditor/LeaveAttendancePage";
+import PerformanceRecordsPage from "@/pages/auditor/PerformanceRecordsPage";
+import AuditorDocumentsPage from "@/pages/auditor/DocumentsPage";
+import DocumentVersionsPage from "@/pages/auditor/DocumentVersionsPage";
+import AccessControlPage from "@/pages/auditor/AccessControlPage";
+import DocumentExpiryPage from "@/pages/auditor/DocumentExpiryPage";
+import DigitalSignaturesPage from "@/pages/auditor/DigitalSignaturesPage";
+import AuditReportsPage from "@/pages/auditor/AuditReportsPage";
+import ComplianceDashboardPage from "@/pages/auditor/ComplianceDashboardPage";
+import TrendAnalysisPage from "@/pages/auditor/TrendAnalysisPage";
+import AuditorCustomReportsPage from "@/pages/auditor/CustomReportsPage";
+import ExecutiveSummaryPage from "@/pages/auditor/ExecutiveSummaryPage";
+import DataPrivacyPage from "@/pages/auditor/DataPrivacyPage";
+import GDPRPage from "@/pages/auditor/GDPRPage";
+import DataProcessingPage from "@/pages/auditor/DataProcessingPage";
+import ConsentManagementPage from "@/pages/auditor/ConsentManagementPage";
+import DataBreachesPage from "@/pages/auditor/DataBreachesPage";
+import AdvancedSearchPage from "@/pages/auditor/AdvancedSearchPage";
+import InvestigationsPage from "@/pages/auditor/InvestigationsPage";
+import ForensicAnalysisPage from "@/pages/auditor/ForensicAnalysisPage";
+import EvidencePage from "@/pages/auditor/EvidencePage";
+import ExportsPage from "@/pages/auditor/ExportsPage";
+import AuditorProfilePage from "@/pages/auditor/ProfilePage";
+import AuditorSettingsPage from "@/pages/auditor/SettingsPage";
 
 // HR Pages
-import HREmployeesPage from '@/pages/hr/EmployeesPage'
-import OnboardingPage from '@/pages/hr/OnboardingPage'
-import HRDirectoryPage from '@/pages/hr/DirectoryPage'
-import OrgChartPage from '@/pages/hr/OrgChartPage'
-import EmployeeAnalyticsPage from '@/pages/hr/EmployeeAnalyticsPage'
-import HRJobsPage from '@/pages/hr/JobsPage'
-import HRCandidatesPage from '@/pages/hr/CandidatesPage'
-import HRInterviewsPage from '@/pages/hr/InterviewsPage'
-import HRPipelinePage from '@/pages/hr/PipelinePage'
-import TalentPoolPage from '@/pages/hr/TalentPoolPage'
-import HRPayrollPage from '@/pages/hr/PayrollPage'
-import HRSalariesPage from '@/pages/hr/SalariesPage'
-import HRBenefitsPage from '@/pages/hr/BenefitsPage'
-import HRTimeTrackingPage from '@/pages/hr/TimeTrackingPage'
-import HRAttendancePage from '@/pages/hr/AttendancePage'
-import HRLeavePage from '@/pages/hr/LeavePage'
-import HROvertimePage from '@/pages/hr/OvertimePage'
-import SchedulesPage from '@/pages/hr/SchedulesPage'
-import HRPerformancePage from '@/pages/hr/PerformancePage'
-import HRDepartmentsPage from '@/pages/hr/DepartmentsPage'
-import HRPoliciesPage from '@/pages/hr/PoliciesPage'
-import HRTeamsPage from '@/pages/hr/TeamsPage'
-import HRLocationsPage from '@/pages/hr/LocationsPage'
-import HRHierarchyPage from '@/pages/hr/HierarchyPage'
-import HRCalendarPage from '@/pages/hr/CalendarPage'
-import HRCareerDevelopmentPage from '@/pages/hr/CareerDevelopmentPage'
-import HRIntegrationsPage from '@/pages/hr/IntegrationsPage'
-import HRCertificationsPage from '@/pages/hr/CertificationsPage'
-import HRPredictivePage from '@/pages/hr/PredictivePage'
-import HRSystemSettingsPage from '@/pages/hr/SystemSettingsPage'
-import HRMessagesPage from '@/pages/hr/MessagesPage'
-import HRProfilePage from '@/pages/hr/ProfilePage'
-import HRMentorshipPage from '@/pages/hr/MentorshipPage'
-import HRSettingsPage from '@/pages/hr/SettingsPage'
-import HRLearningAnalyticsPage from '@/pages/hr/LearningAnalyticsPage'
-import HRSkillsPage from '@/pages/hr/SkillsPage'
-import HRUserManagementPage from '@/pages/hr/UserManagementPage'
-import HRExecutiveReportsPage from '@/pages/hr/ExecutiveReportsPage'
-import HRWorkforceAnalyticsPage from '@/pages/hr/WorkforceAnalyticsPage'
-import HRReportsPage from '@/pages/hr/HRReportsPage'
-import HRPrivacyPage from '@/pages/hr/HRPrivacyPage'
-import HRRiskPage from '@/pages/hr/HRRiskPage'
-import HRLegalPage from '@/pages/hr/HRLegalPage'
-import HRAuditPage from '@/pages/hr/HRAuditPage'
-import HRTemplatesPage from '@/pages/hr/TemplatesPage'
-import HRReportingPage from '@/pages/hr/ReportingPage'
-import HRFeedbackPage from '@/pages/hr/FeedbackPage'
-import HRPerformanceAnalyticsPage from '@/pages/hr/PerformanceAnalyticsPage'
-import HRCompensationAnalyticsPage from '@/pages/hr/CompensationAnalyticsPage'
-import HRTaxManagementPage from '@/pages/hr/TaxManagementPage'
-import HRPositionsPage from '@/pages/hr/PositionsPage'
-import HRContractsPage from '@/pages/hr/ContractsPage'
-import HRHandbookPage from '@/pages/hr/HandbookPage'
-import HRDocumentsPage from '@/pages/hr/DocumentsPage'
-import HRGoalsPage from '@/pages/hr/GoalsPage'
-import HRAnalyticsPage from '@/pages/hr/HRAnalyticsPage'
-import HRTrainingPage from '@/pages/hr/TrainingPage'
-import HRCostCentersPage from '@/pages/hr/CostCentersPage'
-import HRCompliancePage from '@/pages/hr/CompliancePage'
-import HRDataManagementPage from '@/pages/hr/DataManagementPage'
-import HRRolesPage from '@/pages/hr/RolesPage'
-import AITrainingRecommendationsPage from '@/pages/trainer/AITrainingRecommendationsPage'
-import DiscussionForumsPage from '@/pages/trainer/DiscussionForumsPage'
-import LearnerFeedbackPage from '@/pages/trainer/LearnerFeedbackPage'
-import InstructorMessagesPage from '@/pages/trainer/InstructorMessagesPage'
-import ResourceLibraryPage from '@/pages/trainer/ResourceLibraryPage'
-import UploadMaterialsPage from '@/pages/trainer/UploadMaterialsPage'
-import DocumentManagementPage from '@/pages/trainer/DocumentManagementPage'
-import ExternalResourcesPage from '@/pages/trainer/ExternalResourcesPage'
-import CertificationsPage from '@/pages/trainer/CertificationsPage'
-import TrainerResourcesPage from '@/pages/trainer/ResourcesPage'
-import TrainerDocumentsPage from '@/pages/trainer/DocumentsPage'
-import PredictionsPage from '@/pages/trainer/PredictionsPage'
-import ForumsPage from '@/pages/trainer/ForumsPage'
-import TrainerFeedbackPage from '@/pages/trainer/FeedbackPage'
-import TrainerMessagesPage from '@/pages/trainer/MessagesPage'
-
+import HREmployeesPage from "@/pages/hr/EmployeesPage";
+import OnboardingPage from "@/pages/hr/OnboardingPage";
+import HRDirectoryPage from "@/pages/hr/DirectoryPage";
+import OrgChartPage from "@/pages/hr/OrgChartPage";
+import EmployeeAnalyticsPage from "@/pages/hr/EmployeeAnalyticsPage";
+import HRJobsPage from "@/pages/hr/JobsPage";
+import HRCandidatesPage from "@/pages/hr/CandidatesPage";
+import HRInterviewsPage from "@/pages/hr/InterviewsPage";
+import HRPipelinePage from "@/pages/hr/PipelinePage";
+import TalentPoolPage from "@/pages/hr/TalentPoolPage";
+import HRPayrollPage from "@/pages/hr/PayrollPage";
+import HRSalariesPage from "@/pages/hr/SalariesPage";
+import HRBenefitsPage from "@/pages/hr/BenefitsPage";
+import HRTimeTrackingPage from "@/pages/hr/TimeTrackingPage";
+import HRAttendancePage from "@/pages/hr/AttendancePage";
+import HRLeavePage from "@/pages/hr/LeavePage";
+import HROvertimePage from "@/pages/hr/OvertimePage";
+import SchedulesPage from "@/pages/hr/SchedulesPage";
+import HRPerformancePage from "@/pages/hr/PerformancePage";
+import HRDepartmentsPage from "@/pages/hr/DepartmentsPage";
+import HRPoliciesPage from "@/pages/hr/PoliciesPage";
+import HRTeamsPage from "@/pages/hr/TeamsPage";
+import HRLocationsPage from "@/pages/hr/LocationsPage";
+import HRHierarchyPage from "@/pages/hr/HierarchyPage";
+import HRCalendarPage from "@/pages/hr/CalendarPage";
+import HRCareerDevelopmentPage from "@/pages/hr/CareerDevelopmentPage";
+import HRIntegrationsPage from "@/pages/hr/IntegrationsPage";
+import HRCertificationsPage from "@/pages/hr/CertificationsPage";
+import HRPredictivePage from "@/pages/hr/PredictivePage";
+import HRSystemSettingsPage from "@/pages/hr/SystemSettingsPage";
+import HRMessagesPage from "@/pages/hr/MessagesPage";
+import HRProfilePage from "@/pages/hr/ProfilePage";
+import HRMentorshipPage from "@/pages/hr/MentorshipPage";
+import HRSettingsPage from "@/pages/hr/SettingsPage";
+import HRLearningAnalyticsPage from "@/pages/hr/LearningAnalyticsPage";
+import HRSkillsPage from "@/pages/hr/SkillsPage";
+import HRUserManagementPage from "@/pages/hr/UserManagementPage";
+import HRExecutiveReportsPage from "@/pages/hr/ExecutiveReportsPage";
+import HRWorkforceAnalyticsPage from "@/pages/hr/WorkforceAnalyticsPage";
+import HRReportsPage from "@/pages/hr/HRReportsPage";
+import HRPrivacyPage from "@/pages/hr/HRPrivacyPage";
+import HRRiskPage from "@/pages/hr/HRRiskPage";
+import HRLegalPage from "@/pages/hr/HRLegalPage";
+import HRAuditPage from "@/pages/hr/HRAuditPage";
+import HRTemplatesPage from "@/pages/hr/TemplatesPage";
+import HRReportingPage from "@/pages/hr/ReportingPage";
+import HRFeedbackPage from "@/pages/hr/FeedbackPage";
+import HRPerformanceAnalyticsPage from "@/pages/hr/PerformanceAnalyticsPage";
+import HRCompensationAnalyticsPage from "@/pages/hr/CompensationAnalyticsPage";
+import HRTaxManagementPage from "@/pages/hr/TaxManagementPage";
+import HRPositionsPage from "@/pages/hr/PositionsPage";
+import HRContractsPage from "@/pages/hr/ContractsPage";
+import HRHandbookPage from "@/pages/hr/HandbookPage";
+import HRDocumentsPage from "@/pages/hr/DocumentsPage";
+import HRGoalsPage from "@/pages/hr/GoalsPage";
+import HRAnalyticsPage from "@/pages/hr/HRAnalyticsPage";
+import HRTrainingPage from "@/pages/hr/TrainingPage";
+import HRCostCentersPage from "@/pages/hr/CostCentersPage";
+import HRCompliancePage from "@/pages/hr/CompliancePage";
+import HRDataManagementPage from "@/pages/hr/DataManagementPage";
+import HRRolesPage from "@/pages/hr/RolesPage";
+import AITrainingRecommendationsPage from "@/pages/trainer/AITrainingRecommendationsPage";
+import DiscussionForumsPage from "@/pages/trainer/DiscussionForumsPage";
+import LearnerFeedbackPage from "@/pages/trainer/LearnerFeedbackPage";
+import InstructorMessagesPage from "@/pages/trainer/InstructorMessagesPage";
+import ResourceLibraryPage from "@/pages/trainer/ResourceLibraryPage";
+import UploadMaterialsPage from "@/pages/trainer/UploadMaterialsPage";
+import DocumentManagementPage from "@/pages/trainer/DocumentManagementPage";
+import ExternalResourcesPage from "@/pages/trainer/ExternalResourcesPage";
+import CertificationsPage from "@/pages/trainer/CertificationsPage";
+import TrainerResourcesPage from "@/pages/trainer/ResourcesPage";
+import TrainerDocumentsPage from "@/pages/trainer/DocumentsPage";
+import PredictionsPage from "@/pages/trainer/PredictionsPage";
+import ForumsPage from "@/pages/trainer/ForumsPage";
+import TrainerFeedbackPage from "@/pages/trainer/FeedbackPage";
+import TrainerMessagesPage from "@/pages/trainer/MessagesPage";
 
 function App() {
   return (
@@ -253,7 +286,7 @@ function App() {
           {/* Public Routes */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
-          
+
           {/* Admin Routes */}
           <Route path="/admin" element={<AdminLayout />}>
             <Route index element={<DashboardPage />} />
@@ -284,7 +317,10 @@ function App() {
             <Route path="compliance" element={<AdminCompliancePage />} />
             <Route path="audit" element={<AuditPage />} />
             <Route path="reports" element={<AdminReportsPage />} />
-            <Route path="certifications" element={<AdminCertificationsPage />} />
+            <Route
+              path="certifications"
+              element={<AdminCertificationsPage />}
+            />
             <Route path="calendar" element={<AdminCalendarPage />} />
             <Route path="messages" element={<AdminMessagesPage />} />
             <Route path="settings" element={<AdminSettingsPage />} />
@@ -308,7 +344,10 @@ function App() {
             <Route path="goals" element={<GoalsPage />} />
             <Route path="feedback" element={<FeedbackPage />} />
             <Route path="training" element={<TrainingPage />} />
-            <Route path="certifications" element={<EmployeeCertificationsPage />} />
+            <Route
+              path="certifications"
+              element={<EmployeeCertificationsPage />}
+            />
             <Route path="skills" element={<SkillsPage />} />
             <Route path="documents" element={<DocumentsPage />} />
             <Route path="policies" element={<PoliciesPage />} />
@@ -325,7 +364,44 @@ function App() {
           {/* Manager Routes */}
           <Route path="/manager" element={<ManagerLayout />}>
             <Route index element={<ManagerDashboard />} />
-            {/* Add more manager routes here as needed */}
+            <Route path="team" element={<TeamOverviewPage />} />
+            <Route path="team-directory" element={<TeamDirectoryPage />} />
+            <Route path="team-performance" element={<TeamPerformancePage />} />
+            <Route path="team-schedule" element={<TeamSchedulePage />} />
+            <Route path="attendance" element={<ManagerAttendancePage />} />
+            <Route path="leave-requests" element={<LeaveRequestsPage />} />
+            <Route path="overtime" element={<ManagerOvertimePage />} />
+            <Route path="time-reports" element={<TimeReportsPage />} />
+            <Route
+              path="performance-reviews"
+              element={<PerformanceReviewsPage />}
+            />
+            <Route path="goals" element={<GoalsPage />} />
+            <Route path="feedback" element={<FeedbackPage />} />
+            <Route path="metrics" element={<MetricsPage />} />
+            <Route path="positions" element={<ManagerPositionsPage />} />
+            <Route path="interviews" element={<ManagerInterviewsPage />} />
+            <Route path="candidates" element={<ManagerCandidatesPage />} />
+            <Route path="hiring-pipeline" element={<HiringPipelinePage />} />
+            <Route path="projects" element={<ProjectsPage />} />
+            <Route path="tasks" element={<TasksPage />} />
+            <Route path="timeline" element={<TimelinePage />} />
+            <Route path="resources" element={<ResourcesPage />} />
+            <Route path="reports" element={<ReportsPage />} />
+            <Route path="analytics" element={<AnalyticsPage />} />
+            <Route path="budget" element={<BudgetPage />} />
+            <Route path="productivity" element={<ProductivityPage />} />
+            <Route path="training-plans" element={<TrainingPlansPage />} />
+            <Route
+              path="skill-development"
+              element={<SkillDevelopmentPage />}
+            />
+            <Route path="career-planning" element={<CareerPlanningPage />} />
+            <Route path="mentorship" element={<ManagerMentorshipPage />} />
+            <Route path="calendar" element={<CalendarPage />} />
+            <Route path="messages" element={<ManagerMessagesPage />} />
+            <Route path="profile" element={<ProfilePage />} />
+            <Route path="settings" element={<ManagerSettingsPage />} />
           </Route>
 
           {/* HR Routes */}
@@ -335,7 +411,10 @@ function App() {
             <Route path="onboarding" element={<OnboardingPage />} />
             <Route path="directory" element={<HRDirectoryPage />} />
             <Route path="org-chart" element={<OrgChartPage />} />
-            <Route path="employee-analytics" element={<EmployeeAnalyticsPage />} />
+            <Route
+              path="employee-analytics"
+              element={<EmployeeAnalyticsPage />}
+            />
             <Route path="jobs" element={<HRJobsPage />} />
             <Route path="candidates" element={<HRCandidatesPage />} />
             <Route path="interviews" element={<HRInterviewsPage />} />
@@ -356,7 +435,10 @@ function App() {
             <Route path="locations" element={<HRLocationsPage />} />
             <Route path="hierarchy" element={<HRHierarchyPage />} />
             <Route path="calendar" element={<HRCalendarPage />} />
-            <Route path="career-development" element={<HRCareerDevelopmentPage />} />
+            <Route
+              path="career-development"
+              element={<HRCareerDevelopmentPage />}
+            />
             <Route path="integrations" element={<HRIntegrationsPage />} />
             <Route path="certifications" element={<HRCertificationsPage />} />
             <Route path="predictive" element={<HRPredictivePage />} />
@@ -365,11 +447,20 @@ function App() {
             <Route path="profile" element={<HRProfilePage />} />
             <Route path="mentorship" element={<HRMentorshipPage />} />
             <Route path="settings" element={<HRSettingsPage />} />
-            <Route path="learning-analytics" element={<HRLearningAnalyticsPage />} />
+            <Route
+              path="learning-analytics"
+              element={<HRLearningAnalyticsPage />}
+            />
             <Route path="skills" element={<HRSkillsPage />} />
             <Route path="user-management" element={<HRUserManagementPage />} />
-            <Route path="executive-reports" element={<HRExecutiveReportsPage />} />
-            <Route path="workforce-analytics" element={<HRWorkforceAnalyticsPage />} />
+            <Route
+              path="executive-reports"
+              element={<HRExecutiveReportsPage />}
+            />
+            <Route
+              path="workforce-analytics"
+              element={<HRWorkforceAnalyticsPage />}
+            />
             <Route path="reports" element={<HRReportsPage />} />
             <Route path="privacy" element={<HRPrivacyPage />} />
             <Route path="risk" element={<HRRiskPage />} />
@@ -378,8 +469,14 @@ function App() {
             <Route path="templates" element={<HRTemplatesPage />} />
             <Route path="reporting" element={<HRReportingPage />} />
             <Route path="feedback" element={<HRFeedbackPage />} />
-            <Route path="performance-analytics" element={<HRPerformanceAnalyticsPage />} />
-            <Route path="compensation-analytics" element={<HRCompensationAnalyticsPage />} />
+            <Route
+              path="performance-analytics"
+              element={<HRPerformanceAnalyticsPage />}
+            />
+            <Route
+              path="compensation-analytics"
+              element={<HRCompensationAnalyticsPage />}
+            />
             <Route path="tax-management" element={<HRTaxManagementPage />} />
             <Route path="positions" element={<HRPositionsPage />} />
             <Route path="contracts" element={<HRContractsPage />} />
@@ -399,7 +496,10 @@ function App() {
             <Route index element={<AuditorDashboard />} />
             <Route path="compliance" element={<CompliancePage />} />
             <Route path="policy-adherence" element={<PolicyAdherencePage />} />
-            <Route path="regulatory-reports" element={<RegulatoryReportsPage />} />
+            <Route
+              path="regulatory-reports"
+              element={<RegulatoryReportsPage />}
+            />
             <Route path="risk-assessment" element={<RiskAssessmentPage />} />
             <Route path="violations" element={<ViolationsPage />} />
             <Route path="activity-logs" element={<ActivityLogsPage />} />
@@ -409,32 +509,65 @@ function App() {
             <Route path="failed-logins" element={<FailedLoginsPage />} />
             <Route path="payroll-audit" element={<PayrollAuditPage />} />
             <Route path="expense-audit" element={<ExpenseAuditPage />} />
-            <Route path="salary-discrepancies" element={<SalaryDiscrepanciesPage />} />
+            <Route
+              path="salary-discrepancies"
+              element={<SalaryDiscrepanciesPage />}
+            />
             <Route path="tax-compliance" element={<TaxCompliancePage />} />
             <Route path="budget-analysis" element={<BudgetAnalysisPage />} />
             <Route path="employee-records" element={<EmployeeRecordsPage />} />
-            <Route path="document-verification" element={<DocumentVerificationPage />} />
-            <Route path="contract-compliance" element={<ContractCompliancePage />} />
+            <Route
+              path="document-verification"
+              element={<DocumentVerificationPage />}
+            />
+            <Route
+              path="contract-compliance"
+              element={<ContractCompliancePage />}
+            />
             <Route path="leave-attendance" element={<LeaveAttendancePage />} />
-            <Route path="performance-records" element={<PerformanceRecordsPage />} />
+            <Route
+              path="performance-records"
+              element={<PerformanceRecordsPage />}
+            />
             <Route path="documents" element={<AuditorDocumentsPage />} />
-            <Route path="document-versions" element={<DocumentVersionsPage />} />
+            <Route
+              path="document-versions"
+              element={<DocumentVersionsPage />}
+            />
             <Route path="access-control" element={<AccessControlPage />} />
             <Route path="document-expiry" element={<DocumentExpiryPage />} />
-            <Route path="digital-signatures" element={<DigitalSignaturesPage />} />
+            <Route
+              path="digital-signatures"
+              element={<DigitalSignaturesPage />}
+            />
             <Route path="audit-reports" element={<AuditReportsPage />} />
-            <Route path="compliance-dashboard" element={<ComplianceDashboardPage />} />
+            <Route
+              path="compliance-dashboard"
+              element={<ComplianceDashboardPage />}
+            />
             <Route path="trend-analysis" element={<TrendAnalysisPage />} />
-            <Route path="custom-reports" element={<CustomReportsPage />} />
-            <Route path="executive-summary" element={<ExecutiveSummaryPage />} />
+            <Route
+              path="custom-reports"
+              element={<AuditorCustomReportsPage />}
+            />
+            <Route
+              path="executive-summary"
+              element={<ExecutiveSummaryPage />}
+            />
             <Route path="data-privacy" element={<DataPrivacyPage />} />
             <Route path="gdpr" element={<GDPRPage />} />
             <Route path="data-processing" element={<DataProcessingPage />} />
-            <Route path="consent-management" element={<ConsentManagementPage />} />
+            <Route
+              path="consent-management"
+              element={<ConsentManagementPage />}
+            />
             <Route path="data-breaches" element={<DataBreachesPage />} />
             <Route path="advanced-search" element={<AdvancedSearchPage />} />
             <Route path="investigations" element={<InvestigationsPage />} />
-            <Route path="forensic-analysis" element={<ForensicAnalysisPage />} />
+            <Route
+              path="forensic-analysis"
+              element={<ForensicAnalysisPage />}
+            />
             <Route path="evidence" element={<EvidencePage />} />
             <Route path="exports" element={<ExportsPage />} />
             <Route path="profile" element={<AuditorProfilePage />} />
@@ -457,44 +590,98 @@ function App() {
             <Route path="learners" element={<LearnersPage />} />
             <Route path="enrollments" element={<EnrollmentManagementPage />} />
             <Route path="groups" element={<LearningGroupsPage />} />
-            <Route path="individual-progress" element={<IndividualProgressPage />} />
+            <Route
+              path="individual-progress"
+              element={<IndividualProgressPage />}
+            />
             <Route path="assessments" element={<SkillAssessmentsPage />} />
-            <Route path="create-assessment" element={<CreateAssessmentPage />} />
+            <Route
+              path="create-assessment"
+              element={<CreateAssessmentPage />}
+            />
             <Route path="question-bank" element={<QuestionBankPage />} />
             <Route path="quiz-results" element={<QuizResultsPage />} />
             <Route path="grading" element={<GradingPage />} />
             <Route path="calendar" element={<TrainingCalendarPage />} />
-            <Route path="issue-certificates" element={<IssueCertificatesPage />} />
-            <Route path="certificate-templates" element={<CertificateTemplatesPage />} />
+            <Route
+              path="issue-certificates"
+              element={<IssueCertificatesPage />}
+            />
+            <Route
+              path="certificate-templates"
+              element={<CertificateTemplatesPage />}
+            />
             <Route path="verification" element={<VerificationSystemPage />} />
             <Route path="skill-matrix" element={<SkillMatrixPage />} />
             <Route path="competency" element={<CompetencyFrameworkPage />} />
             <Route path="skill-gaps" element={<SkillGapAnalysisPage />} />
-            <Route path="career-development" element={<CareerDevelopmentPage />} />
+            <Route
+              path="career-development"
+              element={<CareerDevelopmentPage />}
+            />
             <Route path="pdp" element={<PersonalDevelopmentPlansPage />} />
             <Route path="renewals" element={<RenewalManagementPage />} />
-            <Route path="certification-tests" element={<CertificationTestsPage />} />
+            <Route
+              path="certification-tests"
+              element={<CertificationTestsPage />}
+            />
             <Route path="live-sessions" element={<LiveSessionsPage />} />
             <Route path="webinars" element={<WebinarManagementPage />} />
             <Route path="room-booking" element={<RoomBookingPage />} />
-            <Route path="instructor-schedule" element={<InstructorSchedulePage />} />
+            <Route
+              path="instructor-schedule"
+              element={<InstructorSchedulePage />}
+            />
             <Route path="analytics" element={<TrainingAnalyticsPage />} />
-            <Route path="completion-reports" element={<CompletionReportsPage />} />
-            <Route path="effectiveness" element={<EffectivenessAnalysisPage />} />
+            <Route
+              path="completion-reports"
+              element={<CompletionReportsPage />}
+            />
+            <Route
+              path="effectiveness"
+              element={<EffectivenessAnalysisPage />}
+            />
             <Route path="roi-analysis" element={<ROIAnalysisPage />} />
-            <Route path="custom-reports" element={<CustomReportsPage />} />
-            <Route path="ai-recommendations" element={<AITrainingRecommendationsPage />} />
-            <Route path="learning-analytics" element={<LearningAnalyticsPage />} />
-            <Route path="performance-predictions" element={<PerformancePredictionsPage />} />
-            <Route path="adaptive-learning" element={<AdaptiveLearningPage />} />
+            <Route
+              path="custom-reports"
+              element={<CustomTrainerReportsPage />}
+            />
+            <Route
+              path="ai-recommendations"
+              element={<AITrainingRecommendationsPage />}
+            />
+            <Route
+              path="learning-analytics"
+              element={<LearningAnalyticsPage />}
+            />
+            <Route
+              path="performance-predictions"
+              element={<PerformancePredictionsPage />}
+            />
+            <Route
+              path="adaptive-learning"
+              element={<AdaptiveLearningPage />}
+            />
             <Route path="announcements" element={<AnnouncementsPage />} />
-            <Route path="discussion-forums" element={<DiscussionForumsPage />} />
+            <Route
+              path="discussion-forums"
+              element={<DiscussionForumsPage />}
+            />
             <Route path="learner-feedback" element={<LearnerFeedbackPage />} />
-            <Route path="instructor-messages" element={<InstructorMessagesPage />} />
+            <Route
+              path="instructor-messages"
+              element={<InstructorMessagesPage />}
+            />
             <Route path="resource-library" element={<ResourceLibraryPage />} />
             <Route path="upload-materials" element={<UploadMaterialsPage />} />
-            <Route path="document-management" element={<DocumentManagementPage />} />
-            <Route path="external-resources" element={<ExternalResourcesPage />} />
+            <Route
+              path="document-management"
+              element={<DocumentManagementPage />}
+            />
+            <Route
+              path="external-resources"
+              element={<ExternalResourcesPage />}
+            />
             <Route path="certifications" element={<CertificationsPage />} />
             <Route path="resources" element={<TrainerResourcesPage />} />
             <Route path="documents" element={<TrainerDocumentsPage />} />
@@ -508,7 +695,7 @@ function App() {
         </Routes>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
